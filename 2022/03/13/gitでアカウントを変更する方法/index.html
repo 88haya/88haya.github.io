@@ -4,14 +4,21 @@
   <meta charset="utf-8">
   
   
-  <title>アーカイブ: 2021 | 88haya&#39;s blog</title>
+  <title>gitでアカウントを変更する方法 | 88haya&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="88haya&#39;s blog">
-<meta property="og:url" content="https://88haya.github.io/archives/2021/page/2/index.html">
+  <meta name="description" content="git hubで２つのアカウントを使用している場合、ターミナル上で2つのアカウントを使い分ける方法を紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitでアカウントを変更する方法">
+<meta property="og:url" content="https://88haya.github.io/2022/03/13/git%E3%81%A7%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="git hubで２つのアカウントを使用している場合、ターミナル上で2つのアカウントを使い分ける方法を紹介します。">
 <meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2022-03-13T14:11:58.000Z">
+<meta property="article:modified_time" content="2022-03-13T14:49:27.372Z">
 <meta property="article:author" content="88haya">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="ターミナル">
+<meta property="article:tag" content="コンピュータ">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
@@ -69,45 +76,99 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2021/08/23/git%E3%81%AE%E5%9F%BA%E6%9C%AC%E3%81%BE%E3%81%A8%E3%82%81/" class="archive-article-date">
-  <time class="dt-published" datetime="2021-08-23T06:02:19.000Z" itemprop="datePublished">8月 23</time>
+        <section id="main"><article id="post-gitでアカウントを変更する方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/13/git%E3%81%A7%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2022-03-13T14:11:58.000Z" itemprop="datePublished">2022-03-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/git/">git</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/08/23/git%E3%81%AE%E5%9F%BA%E6%9C%AC%E3%81%BE%E3%81%A8%E3%82%81/">git操作の一連の流れまとめ</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      gitでアカウントを変更する方法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
+      </header>
     
-    <a class="extend prev" rel="prev" href="/archives/2021/">&laquo; 戻る</a><a class="page-number" href="/archives/2021/">1</a><span class="page-number current">2</span>
-  </nav>
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>GitHubのアカウントを仕事用とプライベート用などで複数使用している方も多いと思います。</p>
+<p>ターミナル上でそれらのリポジトリにpushしようとするとき、適切な手順を踏まないと想定していたアカウントとは別のアカウントでpushしていまうこともあります。</p>
+<p>このページではそのようなことが起こらないようにするために、どのようにGit上で複数のアカウントを使い分ければ良いのか（今Gitを管理しているアカウントを別のアカウントに変更する方法）を解説します。</p>
+<h1><span id="目次">目次</span></h1><!-- toc -->
+
+<ul>
+<li><a href="#1git-config%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%A4%89%E6%9B%B4">1.git configの情報を変更</a></li>
+<li><a href="#2%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89githubcom%E3%82%92%E5%89%8A%E9%99%A4">2.キーチェーンからgithub.comを削除</a></li>
+<li><a href="#3%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%8F%96%E5%BE%97">3.パーソナルアクセストークンを取得</a></li>
+<li><a href="#4push%E3%81%99%E3%82%8B">4.pushする</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="1git-configの情報を変更">1.git configの情報を変更</span></h2><p>まずターミナル状で管理しているgitのメールアドレスとユーザー名を適切に設定します。</p>
+<p>pushするとき、ここで設定したメールアドレスをもとにアカウントが判別されます。</p>
+<p>まず以下のコマンドで現在のconfigの状況を調べます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p>user.emailとuser.nameが使用したいGitHubのアカウントのものと異なる場合は以下のコマンドで修正します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　git config --global user.email　&quot;メールアドレス&quot;</span><br><span class="line">　git config --global user.name &quot;ユーザ名&quot;</span><br></pre></td></tr></table></figure>
+
+<p>もう一度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p>を実行して適切に修正されたことを確認します。</p>
+<h2><span id="2キーチェーンからgithubcomを削除">2.キーチェーンからgithub.comを削除</span></h2><p>Macを使っている方はキーチェーンにgithubのログイン情報が保存され、pushの度にユーザ名とパスワードを聞かれないという方も多いと思います。</p>
+<p>そのような方はキーチェーンアプリを開いて名前がgithub.comになっているものを右クリックで削除してください。</p>
+<p>これにより既存のログインしているGitHubアカウントから抜けることができます。</p>
+<h2><span id="3パーソナルアクセストークンを取得">3.パーソナルアクセストークンを取得</span></h2><p>2021年8月からターミナル上でGitHubにアクセス（ログイン）するにはパーソナルアクセストークンを用いる必要があります。</p>
+<p>使用したいGitHubアカウントでパーソナルアクセストークンを取得してください。</p>
+<p>以下の記事でその方法を解説しているのでやり方が分からない方は参照してください。</p>
+<ul>
+<li><a href="https://88haya.github.io/2021/09/25/GitHub%E3%81%A7%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/">GitHubでパーソナルアクセストークンを用いる方法</a>)</li>
+</ul>
+<h2><span id="4pushする">4.pushする</span></h2><p>ここまで行ってからcommit, pushを行うと</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Username for &#x27;https://github.com&#x27;:</span><br></pre></td></tr></table></figure>
+<p>と聞かれるのでここにGitHubのユーザ名を入力し、そのあとに</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Password for &#x27;https://(ユーザ名)@github.com&#x27;: </span><br></pre></td></tr></table></figure>
+<p>と聞かれるのでここに先ほど取得したパーソナルアクセストークンをコピペします。</p>
+<p>これで想定したアカウントでGitHubのリポジトリにpushすることができます。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2022/03/13/git%E3%81%A7%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" data-id="cl0pe7k4k0000zd093biqcpp3" data-title="gitでアカウントを変更する方法" class="article-share-link">共有</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF/" rel="tag">コンピュータ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/03/13/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">ターミナルで使えるショートカット一覧</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
 
 </section>
         
