@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>テンソルネットワークの基礎【ダイアグラム表記, 縮約, 必要となる数学】 | 88haya&#39;s blog</title>
+  <title>GitHubでパーソナルアクセストークン用いる方法 | 88haya&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="テンソルネットワークでまず最初に理解すべき事項としてダイアグラム表記、縮約、基礎となる数学について解説します。">
+  <meta name="description" content="GitHubでパーソナルアクセストークンを用いた認証を行う方法を解説します.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="テンソルネットワークの基礎【ダイアグラム表記, 縮約, 必要となる数学】">
-<meta property="og:url" content="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84-%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%91/index.html">
+<meta property="og:title" content="GitHubでパーソナルアクセストークン用いる方法">
+<meta property="og:url" content="https://88haya.github.io/2023/08/26/GitHub%E3%81%A7%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="88haya&#39;s blog">
-<meta property="og:description" content="テンソルネットワークでまず最初に理解すべき事項としてダイアグラム表記、縮約、基礎となる数学について解説します。">
+<meta property="og:description" content="GitHubでパーソナルアクセストークンを用いた認証を行う方法を解説します.">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2023-08-25T15:30:26.000Z">
-<meta property="article:modified_time" content="2023-08-25T15:48:38.125Z">
+<meta property="article:published_time" content="2023-08-26T12:11:38.000Z">
+<meta property="article:modified_time" content="2023-08-25T15:49:16.621Z">
 <meta property="article:author" content="88haya">
-<meta property="article:tag" content="テンソルネットワーク">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
@@ -74,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-テンソルネットワークの基礎【ダイアグラム表記-縮約-必要となる数学】" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-GitHubでパーソナルアクセストークン用いる方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84-%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%91/" class="article-date">
-  <time class="dt-published" datetime="2023-08-25T15:30:26.000Z" itemprop="datePublished">2023-08-26</time>
+    <a href="/2023/08/26/GitHub%E3%81%A7%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-08-26T12:11:38.000Z" itemprop="datePublished">2023-08-26</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      テンソルネットワークの基礎【ダイアグラム表記, 縮約, 必要となる数学】
+      GitHubでパーソナルアクセストークン用いる方法
     </h1>
   
 
@@ -96,35 +96,42 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
- MathJax.Hub.Config({
- tex2jax: {
- inlineMath: [['$', '$'] ],
- displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
- }
- });
-</script>
-
-<p>テンソルネットワークでまず最初に学ぶべき基本的な事項をまとめました。</p>
+        <p>2021年8月からコマンドライン上でGitHubにアクセスする際に,パスワードを用いた認証が行えなくなりました.<br>代わりに用いられるのがパーソナルアクセストークンというものです.</p>
+<p>ここではパーソナルアクセストークンの生成方法や使い方を解説します.</p>
 <h1><span id="目次">目次</span></h1><!-- toc -->
 
 <ul>
-<li><a href="#%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A8%E3%81%AF">テンソルネットワークとは</a></li>
+<li><a href="#%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%8F%96%E5%BE%97">パーソナルアクセストークンを取得</a></li>
+<li><a href="#%E4%BD%BF%E3%81%84%E6%96%B9">使い方</a></li>
+<li><a href="#%E4%BB%A5%E5%89%8D%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%83%85%E5%A0%B1%E3%81%8C%E6%AE%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88">以前のキーチェーン情報が残っている場合</a></li>
 </ul>
 <!-- tocstop -->
 
-<h2><span id="テンソルネットワークとは">テンソルネットワークとは</span></h2><p>まずテンソルとは<br>行列</p>
+<h2><span id="パーソナルアクセストークンを取得">パーソナルアクセストークンを取得</span></h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com" github" ">GitHub</a>にアクセスしてログイン</li>
+<li>右上のアイコン→「Settings」</li>
+<li>左のメニュー→「Developer settings」</li>
+<li>左のメニュー→「Personal access tokens」</li>
+<li>右上の「Generate new token」</li>
+<li>Noteに何のためのトークンなのかを入力(自分が分かる名前なら何でも大丈夫です)</li>
+<li>Expirationでこのトークンの期限を選択(30日なら30日後にもう一度トークンを作り直す必要があります)</li>
+<li>Select scopesでこのトークンの機能範囲を選択します(よく分からない方は全てにチェックを付けても特に問題ありません)</li>
+<li>一番下の「Generate token」を押します.</li>
+<li>生成されたトークンが緑の部分に表示されるのでコピーしておく</li>
+</ol>
+<h2><span id="使い方">使い方</span></h2><p>コマンドラインでGitHubを用いるときにパスワードを求められるタイミングで先程コピーしたトークン文字列をペーストする.</p>
+<p>または毎回パスワードを入力するのが面倒な場合はMacであればキーチェーンに保存しておく.<br>方法は(<a target="_blank" rel="noopener" href="https://docs.github.com/ja/github/getting-started-with-github/getting-started-with-git/updating-credentials-from-the-macos-keychain">https://docs.github.com/ja/github/getting-started-with-github/getting-started-with-git/updating-credentials-from-the-macos-keychain</a>)</p>
+<h2><span id="以前のキーチェーン情報が残っている場合">以前のキーチェーン情報が残っている場合</span></h2><p>以下をコマンドラインで入力することで過去の情報を削除して新しくログインしなおせる.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git credential-osxkeychain erase</span><br><span class="line">host=github.com</span><br><span class="line">protocol=https</span><br><span class="line">&gt; [Press Return]</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84-%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%91/" data-id="cllqr7ab600002j098hxg5wyy" data-title="テンソルネットワークの基礎【ダイアグラム表記, 縮約, 必要となる数学】" class="article-share-link">共有</a>
+      <a data-url="https://88haya.github.io/2023/08/26/GitHub%E3%81%A7%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/" data-id="cllqrmo620000b90972xgdb35" data-title="GitHubでパーソナルアクセストークン用いる方法" class="article-share-link">共有</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
     </footer>
   </div>
@@ -132,19 +139,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/08/26/Hexo%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%E6%B5%81%E3%82%8C%E3%81%BE%E3%81%A8%E3%82%81/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          Hexoで記事を書く流れまとめ
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/08/25/Hexo%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E8%A8%98%E4%BA%8B%E3%81%AB%E6%8C%BF%E5%85%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/08/26/Hexo%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%E6%B5%81%E3%82%8C%E3%81%BE%E3%81%A8%E3%82%81/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Hexoで数式を記事に挿入する方法</div>
+      <div class="article-nav-title">Hexoで記事を書く流れまとめ</div>
     </a>
   
 </nav>
