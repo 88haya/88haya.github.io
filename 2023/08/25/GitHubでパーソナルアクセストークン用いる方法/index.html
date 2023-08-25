@@ -13,15 +13,11 @@
 <meta property="og:site_name" content="88haya&#39;s blog">
 <meta property="og:description" content="GitHubでパーソナルアクセストークンを用いた認証を行う方法を解説します.">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:image" content="https://88haya.github.io/2023/08/25/GitHub%E3%81%A6%E3%82%99%E3%83%8F%E3%82%9A%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/hexo1.png">
-<meta property="og:image" content="https://88haya.github.io/2023/08/25/GitHub%E3%81%A6%E3%82%99%E3%83%8F%E3%82%9A%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/hexo2.png">
-<meta property="og:image" content="https://88haya.github.io/2023/08/25/GitHub%E3%81%A6%E3%82%99%E3%83%8F%E3%82%9A%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/hexo3.png">
 <meta property="article:published_time" content="2023-08-25T12:11:38.000Z">
-<meta property="article:modified_time" content="2023-08-25T14:56:47.570Z">
+<meta property="article:modified_time" content="2023-08-25T15:08:56.480Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://88haya.github.io/2023/08/25/GitHub%E3%81%A6%E3%82%99%E3%83%8F%E3%82%9A%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/hexo1.png">
   
     <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
   
@@ -111,23 +107,30 @@
 <ul>
 <li><a href="#%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%8F%96%E5%BE%97">パーソナルアクセストークンを取得</a></li>
 <li><a href="#%E4%BD%BF%E3%81%84%E6%96%B9">使い方</a></li>
+<li><a href="#%E4%BB%A5%E5%89%8D%E3%81%AE%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E6%83%85%E5%A0%B1%E3%81%8C%E6%AE%8B%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8B%E5%A0%B4%E5%90%88">以前のキーチェーン情報が残っている場合</a></li>
 </ul>
 <!-- tocstop -->
 
 <h2><span id="パーソナルアクセストークンを取得">パーソナルアクセストークンを取得</span></h2><ol>
 <li><a target="_blank" rel="noopener" href="https://github.com" github" ">GitHub</a>にアクセスしてログイン</li>
 <li>右上のアイコン→「Settings」</li>
-<li>左のメニュー→「Developer settings」<br><img src="hexo1.png" alt="developer_settings" title="Developer Settings"></li>
-<li>左のメニュー→「Personal access tokens」<br><img src="hexo2.png" alt="personal_access_tokens" title="Personal Access Tokens"></li>
+<li>左のメニュー→「Developer settings」</li>
+<li>左のメニュー→「Personal access tokens」</li>
 <li>右上の「Generate new token」</li>
 <li>Noteに何のためのトークンなのかを入力(自分が分かる名前なら何でも大丈夫です)</li>
-<li>Expirationでこのトークンの期限を選択(30日なら30日後にもう一度トークンを作り直す必要があります)<br><img src="hexo3.png" alt="generate_new_token" title="Generate New Token"></li>
+<li>Expirationでこのトークンの期限を選択(30日なら30日後にもう一度トークンを作り直す必要があります)</li>
 <li>Select scopesでこのトークンの機能範囲を選択します(よく分からない方は全てにチェックを付けても特に問題ありません)</li>
 <li>一番下の「Generate token」を押します.</li>
 <li>生成されたトークンが緑の部分に表示されるのでコピーしておく</li>
 </ol>
 <h2><span id="使い方">使い方</span></h2><p>コマンドラインでGitHubを用いるときにパスワードを求められるタイミングで先程コピーしたトークン文字列をペーストする.</p>
 <p>または毎回パスワードを入力するのが面倒な場合はMacであればキーチェーンに保存しておく.<br>方法は(<a target="_blank" rel="noopener" href="https://docs.github.com/ja/github/getting-started-with-github/getting-started-with-git/updating-credentials-from-the-macos-keychain">https://docs.github.com/ja/github/getting-started-with-github/getting-started-with-git/updating-credentials-from-the-macos-keychain</a>)</p>
+<h2><span id="以前のキーチェーン情報が残っている場合">以前のキーチェーン情報が残っている場合</span></h2><p>以下をコマンドラインで入力することで過去の情報を削除して新しくログインしなおせる.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git credential-osxkeychain erase</span><br><span class="line">host=github.com</span><br><span class="line">protocol=https</span><br><span class="line">&gt; [Press Return]</span><br></pre></td></tr></table></figure>
+
+
+
+
 
       
     </div>
