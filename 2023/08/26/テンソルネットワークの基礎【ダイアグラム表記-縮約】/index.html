@@ -17,8 +17,9 @@
 <meta property="og:image" content="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/tn2.png">
 <meta property="og:image" content="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/tn3.jpeg">
 <meta property="og:image" content="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/tn4.png">
+<meta property="og:image" content="https://88haya.github.io/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/tn5.jpeg">
 <meta property="article:published_time" content="2023-08-26T03:57:42.000Z">
-<meta property="article:modified_time" content="2023-08-26T03:58:27.334Z">
+<meta property="article:modified_time" content="2023-08-26T05:39:25.141Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="テンソルネットワーク">
 <meta name="twitter:card" content="summary">
@@ -120,6 +121,8 @@
 <li><a href="#%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98">ダイアグラム表記</a></li>
 <li><a href="#%E7%B8%AE%E7%B4%84">縮約</a></li>
 <li><a href="#%E4%BE%8Bn-qubit%E3%81%8B%E3%82%89%E3%81%AA%E3%82%8B%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B">(例)N qubitからなる量子状態</a></li>
+<li><a href="#%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%81%A8%E3%81%AE%E9%96%A2%E4%BF%82">エンタングルメントとの関係</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE">参考文献</a></li>
 </ul>
 <!-- tocstop -->
 
@@ -141,8 +144,17 @@
 <p>つまりN qubitからなる量子状態を表現するには$2^N$個の係数$C_{i_1, …, i_N}$を指定する必要がある。このように指数関数的に大きな数の値を指定する必要があることは量子多体系の解析において大きな障壁となる。</p>
 <p>これをテンソルネットワークで表現すると以下のようになる。</p>
 <p><img src="tn4.png" alt="N qubitの量子状態"></p>
-<p>このテンソルネットワークの縮約をとることで$C_{i_1, …, i_N}$を指定できる。このテンソルネットワークでは$2ND$個の係数が必要となる。ここでDはボンド次元を表す。(より一般的にはテンソルネットワークでは必要な係数の個数を$O(poly(N)poly(D))$にできるということが知られている。)</p>
+<p>このテンソルネットワークの縮約をとることで$C_{i_1, …, i_N}$を指定できる。このテンソルネットワークでは$2ND$個の係数が必要となる。ここでDはボンド次元を表す。より一般的にはテンソルネットワークでは必要な係数の個数を$O(poly(N)poly(D))$にできるということが知られている($poly$は多項式のオーダーであることを表す)。</p>
 <p>よって必要な係数の個数を大幅に削減できたことが分かる。他にも線形代数の知識、繰り込み群、その他テンソルネットワーク独自のアルゴリズムを用いることで計算量を削減できることが知られている。</p>
+<h2><span id="エンタングルメントとの関係">エンタングルメントとの関係</span></h2><p>N qubitを扱う際、我々は厳密には$2^N$次元のヒルベルト空間を扱う必要があるが、先ほども述べたように一般にそのような指数関数的に大きな空間を扱うのは容易ではない。一方で我々が量子多体問題を考える際、多くの場合で興味があるのは局所的な相互作用(つまり付近の粒子とだけ相互作用がある場合、下図のA)である。つまりヒルベルト空間全体(下図のB)を考える必要はない。</p>
+<p>より正確に言うと、<strong>局所相互作用のみを考えたときのギャップのあるハミルトニアンの低エネルギー状態</strong>に興味の対称がある場合がほとんどである。このような場合、エンタングルメントエントロピー$S$は系を分割する面積に比例することが知られている。このことは「エンタングルメントが面積則に従う」と表現される。エンタングルメントエントロピーとは2つの系のエンタングルメントの強さを表す量である。</p>
+<p>そして<strong>面積則に従う物理状態はテンソルネットワークを使って十分に近似できる</strong>ことが知られている。これはテンソルネットワークを用いた表現が有用である根拠となっている。</p>
+<p><img src="tn5.jpeg" alt="面積則"></p>
+<h2><span id="参考文献">参考文献</span></h2><ul>
+<li>Román Orús,A practical introduction to tensor networks: Matrix product states and projected entangled pair states,Annals of Physics,Volume 349,2014,Pages 117-158,ISSN 0003-4916</li>
+<li>Román Orús, Tensor networks for complex quantum systems, Nature Reviews Physics volume 1, pages 538–550 (2019)</li>
+<li>小柴健史, 藤井啓祐, 森前智行, 観測に基づく量子計算, コロナ社</li>
+</ul>
 
       
     </div>
