@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>gitで複数のアカウントを管理する方法 | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="GitHubで２つのアカウントを使用している場合、ターミナル上で2つのアカウントを使い分ける方法を紹介します。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gitで複数のアカウントを管理する方法">
+<meta property="og:url" content="https://88haya.github.io/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="GitHubで２つのアカウントを使用している場合、ターミナル上で2つのアカウントを使い分ける方法を紹介します。">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2023-10-11T13:54:07.000Z">
+<meta property="article:modified_time" content="2023-10-11T13:55:17.010Z">
+<meta property="article:author" content="88haya">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-gitで複数のアカウントを管理する方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="article-date">
+  <time class="dt-published" datetime="2023-10-11T13:54:07.000Z" itemprop="datePublished">2023-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      gitで複数のアカウントを管理する方法
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>GitHubのアカウントを仕事用とプライベート用などで複数使用している方も多いと思います。</p>
+<p>ターミナル上でそれらのリポジトリにpushしようとするとき、適切な手順を踏まないと想定していたアカウントとは別のアカウントでpushしていまうこともあります。</p>
+<p>このページではそのようなことが起こらないようにするために、どのようにGit上で複数のアカウントを使い分ければ良いのか（今Gitを管理しているアカウントを別のアカウントに変更する方法）を解説します。</p>
+<h1><span id="目次">目次</span></h1><!-- toc -->
+
+<ul>
+<li><a href="#1git-config%E3%81%AE%E6%83%85%E5%A0%B1%E3%82%92%E5%A4%89%E6%9B%B4">1.git configの情報を変更</a></li>
+<li><a href="#2%E3%82%AD%E3%83%BC%E3%83%81%E3%82%A7%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89githubcom%E3%82%92%E5%89%8A%E9%99%A4">2.キーチェーンからgithub.comを削除</a></li>
+<li><a href="#3%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E5%8F%96%E5%BE%97">3.パーソナルアクセストークンを取得</a></li>
+<li><a href="#4push%E3%81%99%E3%82%8B">4.pushする</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="1git-configの情報を変更">1.git configの情報を変更</span></h2><p>まずターミナル状で管理しているgitのメールアドレスとユーザー名を適切に設定します。</p>
+<p>pushするとき、ここで設定したメールアドレスをもとにアカウントが判別されます。</p>
+<p>まず以下のコマンドで現在のconfigの状況を調べます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p>user.emailとuser.nameが使用したいGitHubのアカウントのものと異なる場合は以下のコマンドで修正します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">　git config --global user.email　&quot;メールアドレス&quot;</span><br><span class="line">　git config --global user.name &quot;ユーザ名&quot;</span><br></pre></td></tr></table></figure>
+
+<p>もう一度</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<p>を実行して適切に修正されたことを確認します。</p>
+<h2><span id="2キーチェーンからgithubcomを削除">2.キーチェーンからgithub.comを削除</span></h2><p>Macを使っている方はキーチェーンにgithubのログイン情報が保存され、pushの度にユーザ名とパスワードを聞かれないという方も多いと思います。</p>
+<p>そのような方はキーチェーンアプリを開いて名前がgithub.comになっているものを右クリックで削除してください。</p>
+<p>これにより既存のログインしているGitHubアカウントから抜けることができます。</p>
+<h2><span id="3パーソナルアクセストークンを取得">3.パーソナルアクセストークンを取得</span></h2><p>2021年8月からターミナル上でGitHubにアクセス（ログイン）するにはパーソナルアクセストークンを用いる必要があります。</p>
+<p>使用したいGitHubアカウントでパーソナルアクセストークンを取得してください。</p>
+<p>以下の記事でその方法を解説しているのでやり方が分からない方は参照してください。</p>
+<ul>
+<li><a href="https://88haya.github.io/2021/09/25/GitHub%E3%81%A7%E3%83%91%E3%83%BC%E3%82%BD%E3%83%8A%E3%83%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E7%94%A8%E3%81%84%E3%82%8B%E6%96%B9%E6%B3%95/">GitHubでパーソナルアクセストークンを用いる方法</a>)</li>
+</ul>
+<h2><span id="4pushする">4.pushする</span></h2><p>ここまで行ってからcommit, pushを行うと</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Username for &#x27;https://github.com&#x27;:</span><br></pre></td></tr></table></figure>
+<p>と聞かれるのでここにGitHubのユーザ名を入力し、そのあとに</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Password for &#x27;https://(ユーザ名)@github.com&#x27;: </span><br></pre></td></tr></table></figure>
+<p>と聞かれるのでここに先ほど取得したパーソナルアクセストークンをコピペします。</p>
+<p>これで想定したアカウントでGitHubのリポジトリにpushすることができます。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" data-id="clnlti0jz0001fg8ag83ubim0" data-title="gitで複数のアカウントを管理する方法" class="article-share-link">共有</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2023/10/11/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          ターミナルで使えるショートカット一覧
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/09/02/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%90%E4%BD%8E%E3%83%A9%E3%83%B3%E3%82%AF%E8%BF%91%E4%BC%BC-%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3-%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%80%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">テンソルネットワークで必要となる数学【低ランク近似, シュミット分解, エンタングルメントエントロピー】</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/">Visual Studio Codeで使えるショートカット</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/">ターミナルで使えるショートカット一覧</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">gitで複数のアカウントを管理する方法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/02/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%90%E4%BD%8E%E3%83%A9%E3%83%B3%E3%82%AF%E8%BF%91%E4%BC%BC-%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3-%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%80%91/">テンソルネットワークで必要となる数学【低ランク近似, シュミット分解, エンタングルメントエントロピー】</a>
+          </li>
+        
+          <li>
+            <a href="/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/">テンソルネットワークの基礎【ダイアグラム表記, 縮約】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

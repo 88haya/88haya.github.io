@@ -4,19 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Hexoで数式を記事に挿入する方法 | 88haya&#39;s blog</title>
+  <title>Visual Studio Codeで使えるショートカット | 88haya&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Hexoで記事に数式を挿入する方法を紹介します.">
+  <meta name="description" content="Visual Studio Codeで使える便利なショートカットの中でも特によく使うものを紹介します。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexoで数式を記事に挿入する方法">
-<meta property="og:url" content="https://88haya.github.io/2023/08/26/Hexo%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E8%A8%98%E4%BA%8B%E3%81%AB%E6%8C%BF%E5%85%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:title" content="Visual Studio Codeで使えるショートカット">
+<meta property="og:url" content="https://88haya.github.io/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/index.html">
 <meta property="og:site_name" content="88haya&#39;s blog">
-<meta property="og:description" content="Hexoで記事に数式を挿入する方法を紹介します.">
+<meta property="og:description" content="Visual Studio Codeで使える便利なショートカットの中でも特によく使うものを紹介します。">
 <meta property="og:locale" content="ja_JP">
-<meta property="article:published_time" content="2023-08-25T15:56:19.000Z">
-<meta property="article:modified_time" content="2023-08-25T15:56:40.909Z">
+<meta property="article:published_time" content="2023-10-11T13:58:13.000Z">
+<meta property="article:modified_time" content="2023-10-11T13:59:30.762Z">
 <meta property="article:author" content="88haya">
-<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="VSCode">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
@@ -74,10 +74,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Hexoで数式を記事に挿入する方法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Visual-Studio-Codeで使えるショートカット" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2023/08/26/Hexo%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E8%A8%98%E4%BA%8B%E3%81%AB%E6%8C%BF%E5%85%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2023-08-25T15:56:19.000Z" itemprop="datePublished">2023-08-26</time>
+    <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/" class="article-date">
+  <time class="dt-published" datetime="2023-10-11T13:58:13.000Z" itemprop="datePublished">2023-10-11</time>
 </a>
     
   </div>
@@ -88,7 +88,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Hexoで数式を記事に挿入する方法
+      Visual Studio Codeで使えるショートカット
     </h1>
   
 
@@ -96,50 +96,128 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
- MathJax.Hub.Config({
- tex2jax: {
- inlineMath: [['$', '$'] ],
- displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
- }
- });
-</script>
-
-<p>MarkdownでHexoの記事を書いているとき数式を入力するに少し苦戦したのでまとめておきます.</p>
+        <p>ここではVisual Studio Code(以下VSCode)で使えるショートカットキー（の中でも特に使う頻度の高いもの）を紹介します。</p>
 <h1><span id="目次">目次</span></h1><!-- toc -->
 
 <ul>
-<li><a href="#%E6%96%B9%E6%B3%95">方法</a><ul>
-<li><a href="#%E6%BA%96%E5%82%99">準備</a></li>
-<li><a href="#%E6%95%B0%E5%BC%8F%E3%81%AE%E8%A8%98%E8%BF%B0">数式の記述</a></li>
-</ul>
-</li>
+<li><a href="#vscode%E3%81%A8%E3%81%AF">VSCodeとは</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E7%9A%84%E3%81%AA%E7%B7%A8%E9%9B%86%E7%94%A8%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88">基本的な編集用ショートカット</a></li>
+<li><a href="#%E3%83%9E%E3%83%AB%E3%83%81%E3%82%AB%E3%83%BC%E3%82%BD%E3%83%AB">マルチカーソル</a></li>
+<li><a href="#%E6%A4%9C%E7%B4%A2">検索</a></li>
+<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E4%BE%BF%E5%88%A9%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88">その他の便利ショートカット</a></li>
 </ul>
 <!-- tocstop -->
 
-<h2><span id="方法">方法</span></h2><h3><span id="準備">準備</span></h3><p>MathJaxというライブラリを用います.<br>以下のコードをMarkdownの記事の上にコピペします.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; async src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;</span><br><span class="line"> MathJax.Hub.Config(&#123;</span><br><span class="line"> tex2jax: &#123;</span><br><span class="line"> inlineMath: [[&#x27;$&#x27;, &#x27;$&#x27;] ],</span><br><span class="line"> displayMath: [ [&#x27;$$&#x27;,&#x27;$$&#x27;], [&quot;\\[&quot;,&quot;\\]&quot;] ]</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="数式の記述">数式の記述</span></h3><p>あとは記事の中でTexの記法で数式を記述するだけです.</p>
-<p>$$で囲むと数式を独立させることができます.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $$</span><br></pre></td></tr></table></figure>
-<p>(実際にMarkdownで入力する際には_で囲った部分が斜体になるのでバックスラッシュでエスケープ(アンダーバーの前にバックスラッシュを入力)してください.)</p>
-<p><strong>出力</strong><br>$$ \int^{b}_{a}f(x)dx = \int^{c}_{a}f(x)dx + \int^{b}_{c}f(x)dx $$</p>
-<p>$で囲むと数式を文の中に埋め込めます.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">積分の公式として$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $は重要である.</span><br></pre></td></tr></table></figure>
-
-<p><strong>出力</strong><br>積分の公式として$ \int^{b}_{a}f(x)dx = \int^{c}_{a}f(x)dx + \int^{b}_{c}f(x)dx $は重要である.</p>
+<h2><span id="vscodeとは">VSCodeとは</span></h2><p>VSCodeとはMicrosoftが開発し、オープンソースソフトウェアとして提供されているコードエディタです。</p>
+<p>数多く提供されている拡張機能を後から自分の用途に合わせて組み込むことができることや、コード補完などの細かな機能も充実しており多くの方が使用しています。</p>
+<h2><span id="基本的な編集用ショートカット">基本的な編集用ショートカット</span></h2><p>まずコードの編集でよく使うショートカットを紹介します</p>
+<table>
+<thead>
+<tr>
+<th align="center">キー</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command + /</td>
+<td align="center">カーソルがある行をコメントアウト</td>
+</tr>
+<tr>
+<td align="center">Option + 上（下）矢印</td>
+<td align="center">カーソルがある行と上（下）の行を入れ替え</td>
+</tr>
+<tr>
+<td align="center">Shift + Option + 上（下）矢印</td>
+<td align="center">カーソルがある行を上（下）に複製</td>
+</tr>
+<tr>
+<td align="center">Command + Enter</td>
+<td align="center">下の行を挿入（下に空白行を挿入しその行にカーソル移動）</td>
+</tr>
+<tr>
+<td align="center">Command + Shift + Enter</td>
+<td align="center">上の行を挿入</td>
+</tr>
+</tbody></table>
+<p>始めの3つは複数行の選択でもそのまま使えます。またVSCodeでは選択せずに「Command + C」「Command + X」をするとカーソルがある行全体に対してコピー・カットを行います。</p>
+<h2><span id="マルチカーソル">マルチカーソル</span></h2><p>カーソルを複数存在させるマルチカーソルも以下のショートカットキーで可能です。これにより複数箇所を同時に編集できます。</p>
+<table>
+<thead>
+<tr>
+<th align="center">キー</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Option + クリック</td>
+<td align="center">カーソルキーを追加</td>
+</tr>
+<tr>
+<td align="center">Command + dの繰り返し</td>
+<td align="center">カーソル上の文字と同一単語を順番に選択</td>
+</tr>
+<tr>
+<td align="center">Command + Shift + L</td>
+<td align="center">カーソル上の文字と同一単語を全て選択</td>
+</tr>
+<tr>
+<td align="center">Command + Option + 上（下）矢印</td>
+<td align="center">上（下）の行末にカーソル追加</td>
+</tr>
+</tbody></table>
+<h2><span id="検索">検索</span></h2><p>現在のファイルから特定の単語を検索するためのショートカットを紹介します。</p>
+<table>
+<thead>
+<tr>
+<th align="center">キー</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command + f</td>
+<td align="center">カーソルがある場所の単語で検索（一致する単語がハイライトされる）</td>
+</tr>
+<tr>
+<td align="center">Command + g</td>
+<td align="center">上でハイライトされた検索結果から次の単語を選択</td>
+</tr>
+<tr>
+<td align="center">Command + Shift + g</td>
+<td align="center">前の単語を選択</td>
+</tr>
+<tr>
+<td align="center">Option + Command + f</td>
+<td align="center">検索した単語を別の単語に置換</td>
+</tr>
+</tbody></table>
+<p>最初の「Command + F」によって検索窓が右上に表示されるのでそこから検索文字を変更することも可能です。</p>
+<p>置換ではReplaceと表示されている窓に置換したい単語を入力します。</p>
+<h2><span id="その他の便利ショートカット">その他の便利ショートカット</span></h2><table>
+<thead>
+<tr>
+<th align="center">キー</th>
+<th align="center">操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Command + b</td>
+<td align="center">side barの表示・非表示の切り替え</td>
+</tr>
+<tr>
+<td align="center">Command + ,</td>
+<td align="center">設定を開く</td>
+</tr>
+</tbody></table>
+<p>side barとはウィンドウの左に出てくるファイルの一覧などが表示される部分です。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://88haya.github.io/2023/08/26/Hexo%E3%81%A7%E6%95%B0%E5%BC%8F%E3%82%92%E8%A8%98%E4%BA%8B%E3%81%AB%E6%8C%BF%E5%85%A5%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" data-id="cllqrmo660001b90987hr3s2m" data-title="Hexoで数式を記事に挿入する方法" class="article-share-link">共有</a>
+      <a data-url="https://88haya.github.io/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/" data-id="clnlti0jx0000fg8aeu2c3nqn" data-title="Visual Studio Codeで使えるショートカット" class="article-share-link">共有</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li></ul>
 
     </footer>
   </div>
@@ -147,19 +225,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2023/08/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%AE%E5%9F%BA%E7%A4%8E%E3%80%90%E3%83%80%E3%82%A4%E3%82%A2%E3%82%B0%E3%83%A9%E3%83%A0%E8%A1%A8%E8%A8%98-%E7%B8%AE%E7%B4%84%E3%80%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">次の記事</strong>
-      <div class="article-nav-title">
-        
-          テンソルネットワークの基礎【ダイアグラム表記, 縮約】
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/08/26/Hexo%E3%81%A7%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F%E6%B5%81%E3%82%8C%E3%81%BE%E3%81%A8%E3%82%81/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/10/11/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前の記事</strong>
-      <div class="article-nav-title">Hexoで記事を書く流れまとめ</div>
+      <div class="article-nav-title">ターミナルで使えるショートカット一覧</div>
     </a>
   
 </nav>
