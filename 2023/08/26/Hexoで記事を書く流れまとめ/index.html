@@ -14,7 +14,7 @@
 <meta property="og:description" content="Hexoで記事を書く流れをまとめました.">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-08-25T15:55:45.000Z">
-<meta property="article:modified_time" content="2023-08-25T15:56:07.346Z">
+<meta property="article:modified_time" content="2023-10-11T13:46:50.367Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -105,7 +105,10 @@
 <li><a href="#%E8%A8%98%E4%BA%8B%E3%81%AE%E4%BD%9C%E6%88%90">記事の作成</a></li>
 <li><a href="#%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E7%92%B0%E5%A2%83%E3%81%A7%E7%A2%BA%E8%AA%8D">ローカル環境で確認</a></li>
 <li><a href="#html%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AE%E7%94%9F%E6%88%90">htmlファイルの生成</a></li>
-<li><a href="#github%E3%81%B8%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5">GitHubへプッシュ</a></li>
+<li><a href="#github%E3%81%B8%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5">GitHubへプッシュ</a><ul>
+<li><a href="#%E4%BB%A5%E4%B8%8B%E3%81%AE%E3%82%88%E3%81%86%E3%81%AA%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%8C%E3%81%A7%E3%82%8B%E3%81%A8%E3%81%8D">以下のようなエラーがでるとき</a></li>
+</ul>
+</li>
 <li><a href="#%E7%A2%BA%E8%AA%8D">確認</a></li>
 </ul>
 <!-- tocstop -->
@@ -123,6 +126,11 @@
 
 <h2><span id="githubへプッシュ">GitHubへプッシュ</span></h2><p>以下のコマンドでGitHubのリポジトリにプッシュします.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
+
+<h3><span id="以下のようなエラーがでるとき">以下のようなエラーがでるとき</span></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fatal: Authentication failed for &#x27;https://github.com/88haya/88haya.github.io.git/&#x27;</span><br><span class="line">FATAL &#123;</span><br><span class="line">  err: Error: Spawn failed</span><br><span class="line">      at ChildProcess.&lt;anonymous&gt; ()</span><br><span class="line">      at ChildProcess.emit (node:events:526:28)</span><br><span class="line">      at Process.ChildProcess._handle.onexit (node:internal/child_process:291:12) &#123;</span><br><span class="line">    code: 128</span><br><span class="line">  &#125;</span><br><span class="line">&#125; Something&#x27;s wrong. Maybe you can find the solution here: %s https://hexo.io/docs/troubleshooting.html</span><br></pre></td></tr></table></figure>
+<p>以下の方法によりコマンドラインで認証情報を削除してもう一度ログインし直す必要がある。hexo deployをするとユーザ名とパスワードが聞かれる。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git credential-osxkeychain erase</span><br><span class="line">host=github.com</span><br><span class="line">protocol=https</span><br><span class="line">&gt; [Press Return]</span><br></pre></td></tr></table></figure>
+
 
 <h2><span id="確認">確認</span></h2><p><code>https://&#123;username&#125;.github.io</code>にアクセスしてページを確認します.反映されるまで数分かかることもあるようです.</p>
 
