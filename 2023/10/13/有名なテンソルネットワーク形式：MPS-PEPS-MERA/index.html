@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/MERA.png">
 <meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/cMERA.png">
 <meta property="article:published_time" content="2023-10-13T00:30:25.163Z">
-<meta property="article:modified_time" content="2023-10-13T08:55:29.219Z">
+<meta property="article:modified_time" content="2023-10-13T09:03:22.177Z">
 <meta property="article:author" content="88haya">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/MPS.png">
@@ -155,12 +155,12 @@
 <h2><span id="meramulti-scale-entanglement-renormalization-ansatz">MERA(Multi Scale Entanglement Renormalization Ansatz)</span></h2><h3><span id="meraの概要">MERAの概要</span></h3><p>MERA(Multi Scale Entanglement Renormalization Ansatz)は下の図に示すように木構造のような形をしている。下から上に見ると、3階のテンソル(三角)は繰り込み変換、つまり自由度を絞る働きをしている。また4階のテンソル(四角)はディスエンタングラーと呼ばれ、周囲とのエンタングルが少ない基底に変換する働きをしている。基底状態を変分法で求める際に、ディスエンタングラーがないとエンタングルメントが小さすぎるため必要になる。よって一番上はエンタングルしていない状態、一番下のはエンタングルしている状態に対応している。これらのテンソルはユニタリである。</p>
 <img src="MERA.png" width="500">
 
-<p>局所的に作用する演算子の期待値$\langle O \rangle= \bra{\psi} O \ket{\psi} $を計算する際に関係ない部分はユニタリ性により消えるため計算が軽い。短距離の相関を切り、長距離の相関を取り込んでいるため臨界系の解析に向いていることが知られている。</p>
-<h3><span id="cmeracontinuous-mera">cMERA(continuous MERA)</span></h3><p>やや踏み込んだ内容だがMERAを離散的にではなく連続的なものとして考えたものをcMERAと呼ぶ。イメージを図に示す。scale方向を連続で考えている。cMERAの概念はQFTs(quantum field theories)で重要なアプローチを与える。エンタングルしていない状態$\ket{\Omega}$(IR state)にエンタングルを加えて与えられたハミルトニアンに対する基底状態$\ket{\psi}$(UV state)を作る。粗視化の段階でヒルベルト空間の次元を一定に維ためダミー状態が必要になる可能性がある。</p>
+<p>局所的に作用する演算子の期待値$\langle O \rangle= \bra{\psi} O |\psi\rangle $を計算する際に関係ない部分はユニタリ性により消えるため計算が軽い。短距離の相関を切り、長距離の相関を取り込んでいるため臨界系の解析に向いていることが知られている。</p>
+<h3><span id="cmeracontinuous-mera">cMERA(continuous MERA)</span></h3><p>やや踏み込んだ内容だがMERAを離散的にではなく連続的なものとして考えたものをcMERAと呼ぶ。イメージを図に示す。scale方向を連続で考えている。cMERAの概念はQFTs(quantum field theories)で重要なアプローチを与える。エンタングルしていない状態$|\Omega\rangle$(IR state)にエンタングルを加えて与えられたハミルトニアンに対する基底状態$|\psi\rangle$(UV state)を作る。粗視化の段階でヒルベルト空間の次元を一定に維ためダミー状態が必要になる可能性がある。</p>
 <img src="cMERA.png" width="500">
 
-<p>量子状態をscale $u$を使って$\ket{\psi(u)}$と表す。$\ket{\psi(u)}$は$\ket{\Omega}$に運動量スケール$k\leqq ∧e^u$のエンタングルを加えることで得る($∧$はUVカットオフスケール)。$u=0$はエンタングルがUV stateに一致するので$\ket{\psi(0)}=\ket{\psi}$に、$u=-\infty$はエンタングルしていないので$\ket{\psi(-\infty)}=\ket{\Omega}$に対応する。また$\ket{\psi(u)}$を以下のように書くことができる。$P$はpath-orderingの演算子であり、$e^{iuL}$はMERAに一致させるための$u$方向のスケール変換である。</p>
-<p>$$\ket{\psi(u)}=e^{-iuL}Pe^{-i\int^u_{-\infty} ^K(s)ds}\ket{\Omega}$$</p>
+<p>量子状態をscale $u$を使って$|\psi(u)\rangle$と表す。$|\psi(u)\rangle$は$|\Omega\rangle$に運動量スケール$k\leqq ∧e^u$のエンタングルを加えることで得る($∧$はUVカットオフスケール)。$u=0$はエンタングルがUV stateに一致するので$|\psi(0)\rangle=|\psi\rangle$に、$u=-\infty$はエンタングルしていないので$|\psi(-\infty)\rangle=|\Omega\rangle$に対応する。また$|\psi(u)\rangle$を以下のように書くことができる。$P$はpath-orderingの演算子であり、$e^{iuL}$はMERAに一致させるための$u$方向のスケール変換である。</p>
+<p>$$|\psi(u)\rangle=e^{-iuL}Pe^{-i\int^u_{-\infty} ^K(s)ds}|\Omega\rangle$$</p>
 <p>$K(s)=\int k(x, s)dx$により$s$方向のスケール(つまり$k=∧e^s$)にエンタングルを加えている。</p>
 
       
