@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>有名なテンソルネットワーク形式：MPS, PEPS, MERA | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="テンソルネットワークで有名なものとしてMPS(Matrix Product State), PEPS(Projected Entangled Pair State), MERA(Multi-scale Entanglement Renormalization Ansatz)という3つの形式を解説します。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有名なテンソルネットワーク形式：MPS, PEPS, MERA">
+<meta property="og:url" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="テンソルネットワークで有名なものとしてMPS(Matrix Product State), PEPS(Projected Entangled Pair State), MERA(Multi-scale Entanglement Renormalization Ansatz)という3つの形式を解説します。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/MPS.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/tn2.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/canonical.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/peps.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/MERA.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/cMERA.png">
+<meta property="article:published_time" content="2023-10-13T00:30:25.163Z">
+<meta property="article:modified_time" content="2023-10-13T08:55:29.219Z">
+<meta property="article:author" content="88haya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/MPS.png">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-有名なテンソルネットワーク形式：MPS-PEPS-MERA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/" class="article-date">
+  <time class="dt-published" datetime="2023-10-13T00:30:25.163Z" itemprop="datePublished">2023-10-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      有名なテンソルネットワーク形式：MPS, PEPS, MERA
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ inlineMath: [['$', '$'] ],
+ displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+ }
+ });
+</script>
+
+<p>テンソルネットワークには有名な形式が複数存在します。ここではMPS(Matrix Product State), PEPS(Projected Entangled Pair State), MERA(Multi-scale Entanglement Renormalization Ansatz)という3つの形式を解説します。</p>
+<h1><span id="目次">目次</span></h1><!-- toc -->
+
+<ul>
+<li><a href="#mpsmatrix-product-state">MPS(Matrix Product State)</a><ul>
+<li><a href="#mps%E3%81%AE%E6%A6%82%E8%A6%81">MPSの概要</a></li>
+<li><a href="#mps%E3%81%AE%E6%A7%8B%E6%88%90%E6%AD%A3%E6%BA%96%E5%9E%8Bcanonical-form">MPSの構成(正準型・Canonical Form)</a></li>
+<li><a href="#mps%E3%81%AE%E8%A8%88%E7%AE%97">MPSの計算</a></li>
+</ul>
+</li>
+<li><a href="#pepsprojected-entangled-pair-state">PEPS(Projected Entangled Pair State)</a></li>
+<li><a href="#meramulti-scale-entanglement-renormalization-ansatz">MERA(Multi Scale Entanglement Renormalization Ansatz)</a><ul>
+<li><a href="#mera%E3%81%AE%E6%A6%82%E8%A6%81">MERAの概要</a></li>
+<li><a href="#cmeracontinuous-mera">cMERA(continuous MERA)</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="mpsmatrix-product-state">MPS(Matrix Product State)</span></h2><h3><span id="mpsの概要">MPSの概要</span></h3><p>MPSとはMatrix Product Stateの略であり、最も有名なテンソルネットワークの形式である。下の図のように1次元にテンソルが並んでいて、1次元の量子多体問題のシミュレーションに使われることが多い。</p>
+<img src="MPS.png" width="500">
+
+<p>数式で表すと次のようになる。隣り合うテンソル同士で縮約をとっている。</p>
+<p> $$ C_{i_1, i_2, …, i_N}=\sum_{\alpha_1, \alpha_2, …, \alpha_N}A^{i_1\alpha_1}_1A^{i_2\alpha_1\alpha_2}_2…A^{i_N\alpha_N}_N $$</p>
+<p>私たちが多くの場合で「ギャップのある局所的ハミルトニアンの低エネルギー状態」に興味がある。このような状態はエンタングルメントエントロピー(<a href="https://88haya.github.io/2023/09/02/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%90%E4%BD%8E%E3%83%A9%E3%83%B3%E3%82%AF%E8%BF%91%E4%BC%BC-%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3-%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%80%91/#%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC">解説</a>)が面積則に従うことが知られている。つまりエンタングルメントエントロピーが系を分割する面積に比例する。1次元の面積則に従う状態はMPSを用いると<strong>有限のボンド次元Dで十分に近似できる</strong>ことが知られている。つまり膨大なヒルベルト空間全体を考える必要が無くなることが分かる。</p>
+<img src="tn2.png" width="500">
+
+<h3><span id="mpsの構成正準型canonical-form">MPSの構成(正準型・Canonical Form)</span></h3><p>N階のテンソルからMPSを構成するには特異値分解を用いる。この形を正準型(Canonical Form)と呼ぶ。</p>
+<p>式で表すと以下のようになる。一番左の脚をシュミット分解(<a href="https://88haya.github.io/2023/09/02/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%90%E4%BD%8E%E3%83%A9%E3%83%B3%E3%82%AF%E8%BF%91%E4%BC%BC-%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3-%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%80%91/#%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3">解説</a>)で切り離す。左から2番目の脚をシュミット分解で切り離す。ということを繰り返していくだけ。特異値を含む行列が間に残ることになるが左または右のテンソルとの縮約をとると消える。</p>
+<p>$$ C_{i_1, i_2, …, i_N}=A_1\lambda_{12}B_{i_2, i_3, …, i_N} \<br>  =A_1\lambda_{12}A_2\lambda_{23}B_{i_3, i_4, …, i_N}  \<br>  = … \<br>  =A_1\lambda_{12}A_2\lambda_{23}…\lambda_{n-1,n}A_n    $$</p>
+<img src="canonical.png" width="500">
+
+<h3><span id="mpsの計算">MPSの計算</span></h3><p>MPS同士の内積を計算するときは左のテンソルから順に縮約をとっていけば良い。またcanonical formを用いると局所的に作用する(数個のテンソルだけに作用する)演算子の期待値の計算を簡単にできる。</p>
+<p>$p$を空いている脚の次元とする。通常のテンソルでは$p^N$個の要素を全て計算機に格納して計算する必要がある。MPSを用いることにより、必要な箇所から3階のテンソルの部分和を順番に作っていけば良いため、計算量を大幅に抑えることができる。</p>
+<h2><span id="pepsprojected-entangled-pair-state">PEPS(Projected Entangled Pair State)</span></h2><p>PEPS(Projected Entangled Pair State)とは2次元に並んだテンソル列であり、2次元の格子状に並んだ量子状態のシミュレーションに用いられる。</p>
+<img src="peps.png" width="500">
+
+<p>MPSと似ている点としては、指数関数的に大きなボンド次元をとることであらゆるヒルベルト空間の量子多体状態を表現できること、小さなボンド次元でも2次元の局所的なハミルトニアンの低エネルギー状態を近似することができること、などが挙げられる。</p>
+<p>MPSと異なる点としては、相関関数が2点の分離距離に対して多項式的に減衰する状態を表現できるという点、ボンド次元が2で十分であるという点、臨界点を記述するのに向いているという点などが挙げられる。</p>
+<h2><span id="meramulti-scale-entanglement-renormalization-ansatz">MERA(Multi Scale Entanglement Renormalization Ansatz)</span></h2><h3><span id="meraの概要">MERAの概要</span></h3><p>MERA(Multi Scale Entanglement Renormalization Ansatz)は下の図に示すように木構造のような形をしている。下から上に見ると、3階のテンソル(三角)は繰り込み変換、つまり自由度を絞る働きをしている。また4階のテンソル(四角)はディスエンタングラーと呼ばれ、周囲とのエンタングルが少ない基底に変換する働きをしている。基底状態を変分法で求める際に、ディスエンタングラーがないとエンタングルメントが小さすぎるため必要になる。よって一番上はエンタングルしていない状態、一番下のはエンタングルしている状態に対応している。これらのテンソルはユニタリである。</p>
+<img src="MERA.png" width="500">
+
+<p>局所的に作用する演算子の期待値$\langle O \rangle= \bra{\psi} O \ket{\psi} $を計算する際に関係ない部分はユニタリ性により消えるため計算が軽い。短距離の相関を切り、長距離の相関を取り込んでいるため臨界系の解析に向いていることが知られている。</p>
+<h3><span id="cmeracontinuous-mera">cMERA(continuous MERA)</span></h3><p>やや踏み込んだ内容だがMERAを離散的にではなく連続的なものとして考えたものをcMERAと呼ぶ。イメージを図に示す。scale方向を連続で考えている。cMERAの概念はQFTs(quantum field theories)で重要なアプローチを与える。エンタングルしていない状態$\ket{\Omega}$(IR state)にエンタングルを加えて与えられたハミルトニアンに対する基底状態$\ket{\psi}$(UV state)を作る。粗視化の段階でヒルベルト空間の次元を一定に維ためダミー状態が必要になる可能性がある。</p>
+<img src="cMERA.png" width="500">
+
+<p>量子状態をscale $u$を使って$\ket{\psi(u)}$と表す。$\ket{\psi(u)}$は$\ket{\Omega}$に運動量スケール$k\leqq ∧e^u$のエンタングルを加えることで得る($∧$はUVカットオフスケール)。$u=0$はエンタングルがUV stateに一致するので$\ket{\psi(0)}=\ket{\psi}$に、$u=-\infty$はエンタングルしていないので$\ket{\psi(-\infty)}=\ket{\Omega}$に対応する。また$\ket{\psi(u)}$を以下のように書くことができる。$P$はpath-orderingの演算子であり、$e^{iuL}$はMERAに一致させるための$u$方向のスケール変換である。</p>
+<p>$$\ket{\psi(u)}=e^{-iuL}Pe^{-i\int^u_{-\infty} ^K(s)ds}\ket{\Omega}$$</p>
+<p>$K(s)=\int k(x, s)dx$により$s$方向のスケール(つまり$k=∧e^s$)にエンタングルを加えている。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/" data-id="clnnxvodx00007w8a0e674nbm" data-title="有名なテンソルネットワーク形式：MPS, PEPS, MERA" class="article-share-link">共有</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">Visual Studio Codeで使えるショートカット</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/">有名なテンソルネットワーク形式：MPS, PEPS, MERA</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/">Visual Studio Codeで使えるショートカット</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/">ターミナルで使えるショートカット一覧</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">gitで複数のアカウントを管理する方法</a>
+          </li>
+        
+          <li>
+            <a href="/2023/09/02/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%81%A7%E5%BF%85%E8%A6%81%E3%81%A8%E3%81%AA%E3%82%8B%E6%95%B0%E5%AD%A6%E3%80%90%E4%BD%8E%E3%83%A9%E3%83%B3%E3%82%AF%E8%BF%91%E4%BC%BC-%E3%82%B7%E3%83%A5%E3%83%9F%E3%83%83%E3%83%88%E5%88%86%E8%A7%A3-%E3%82%A8%E3%83%B3%E3%82%BF%E3%83%B3%E3%82%B0%E3%83%AB%E3%83%A1%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%83%88%E3%83%AD%E3%83%94%E3%83%BC%E3%80%91/">テンソルネットワークで必要となる数学【低ランク近似, シュミット分解, エンタングルメントエントロピー】</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
