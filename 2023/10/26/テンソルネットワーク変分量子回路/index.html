@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>テンソルネットワーク変分量子回路 | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="テンソルネットワークの量子計算分野への応用の1つとしてテンソルネットワーク変分量子回路という手法を解説します。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="テンソルネットワーク変分量子回路">
+<meta property="og:url" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="テンソルネットワークの量子計算分野への応用の1つとしてテンソルネットワーク変分量子回路という手法を解説します。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/QTNC.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/old1.png">
+<meta property="og:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/old2.png">
+<meta property="article:published_time" content="2023-10-26T14:26:13.714Z">
+<meta property="article:modified_time" content="2023-10-28T06:53:00.618Z">
+<meta property="article:author" content="88haya">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/QTNC.png">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-テンソルネットワーク変分量子回路" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/" class="article-date">
+  <time class="dt-published" datetime="2023-10-26T14:26:13.714Z" itemprop="datePublished">2023-10-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      テンソルネットワーク変分量子回路
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ inlineMath: [['$', '$'] ],
+ displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+ }
+ });
+</script>
+
+<p>量子計算分野への応用の1つとしてテンソルネットワーク変分量子回路という手法を解説します。この分野は(おおよそ)2020年以降から見られ始めた分野であり、まだ完全に確立されてはいない。</p>
+<h1><span id="目次">目次</span></h1><!-- toc -->
+
+<ul>
+<li><a href="#%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF%E3%81%A8%E3%81%AF">テンソルネットワーク変分量子回路とは</a></li>
+<li><a href="#%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B61-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</a></li>
+<li><a href="#%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B62variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</a></li>
+<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B6">その他の既存研究</a></li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="テンソルネットワーク変分量子回路とは">テンソルネットワーク変分量子回路とは</span></h2><p>テンソルネットワークはとある状態を効率よく表現する手法だが、ここではテンソルをユニタリに限定し、量子回路を表現することを考える。量子機械学習の分野で登場する変分量子回路アルゴリズムとテンソルネットワークを組み合わせた手法と考えることができる。つまり量子回路中のユニタリ操作のパラメータを変化させながら、量子回路を所望の形に最適化する手法である。テンソルネットワークのボンド次元を$D$、量子回路のqubit(ボンドqubitと呼ぶ)を$n$とすると、$D=2^n$の関係がある。</p>
+<p>以下にMERAとMPSを量子回路に対応させた例を示す。</p>
+<img src="QTNC.png" width="500">
+
+<p>次にテンソルネットワーク変分量子回路の利点について説明する。この手法を用いると古典計算機から量子計算器への移行が容易になる。つまり古典で学習したモデルを量子に移行してさらに最適化を行うことができる。またcircuit cutting techniques(<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-023-30258-y">参照</a>)を用いることで少ないqubitの量子計算機への応用が可能になる。さらにテンソルネットワークを用いていることによりヒルベルト空間の増加を抑えられ、様々なテンソルネットワークのテクニックが使える。つまりqubit効率のよりテンソルネットワーク量子回路が使える。また線形演算子のみで構成されるため理論的な理解が豊富である。</p>
+<h2><span id="既存研究1-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</span></h2><p>この手法を用いた既存研究として <strong>Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</strong> について解説する。この論文ではテンソルネットワークで構成した量子回路$\bar{U}<em>{\lbrace u, w\rbrace }\approx U$を、ハミルトニアンを対角化するように最適化するタスク(つまり$U^† H U=D$を満たす$U$を探索)を考えている。回路はMERA likeな構成とし、コスト関数$\sigma ^2=Tr(H^2)-\sum</em>{i=1}^{2^N}[\bar{U^†}H\bar{U}]^2_{(i, i)}$と定義する。</p>
+<p>最適化の方法としては2パターン調べられていて、1つ目がline-search algorithm。これはテンソルを1つずつ最適化していき、他は固定するという手法である。最急降下法(SD)や共役勾配法(CG)の考え方を用いている。例えばSDを用いたときあるユニタリは次のように更新される。$u_{i+1}=e^{-\alpha g_i}u_i$。2つ目がlinearizing algorithmであり、これは最大4次である$\sigma ^4$を$u_i$について線形化することで問題を簡単化している(詳細は省略する)。</p>
+<img src="old1.png" width="500">
+(図は論文より引用)
+
+<h2><span id="既存研究2variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</span></h2><p>この論文ではハイゼンベルグモデル、ハバードモデルの基底状態を表現するテンソルネットワークを変分的に探索するタスクを考えている。既存研究1の方では量子回路をテンソルネットワークとして表現していたが、こちらでは量子状態をテンソルネットワークで表現している。通常のテンソルネットワーク表現vsユニタリのテンソルネットワーク表現、テンソルネットワークの形状での性能比較などが評価されている。コスト関数$F=1-|{\langle \Psi|\psi\rangle}|$としている。ここで$ |\Psi\rangle $は十分大きなボンド次元(~400)でDMRGアルゴリズムを用いて求められたエラーが無視できる程度の量子状態(つまり正解データのようなもの)。 $ |\psi\rangle $は<em>Ansatz</em>によって得られた量子状態。</p>
+<p>最適化の方法として2パターン調べられている。1つ目は2体ユニタリゲートを1つずつ、他は固定しながら最適化している。つまりDMRG likeな方法である。2つ目は全体の勾配を同時に計算している。CG, L-BFGS-Bなどよく知られた方法である。結論としてはユニタリの方が表現力が高く、コンパクトであるということが述べられている。</p>
+<img src="old2.png" width="500">
+(図は論文より引用)
+
+<h2><span id="その他の既存研究">その他の既存研究</span></h2><p>その他のテンソルネットワーク変分量子回路について論文を以下に挙げる。</p>
+<ul>
+<li><p>Variational quantum simulation of the critical Ising model with symmetry averaging [Troy J. Sevell+, PRA, 2023]：Deep multiscale entanglement renormalization ansatz(DMERA)形式の変分量子回路によるcritical Ising modelのシミュレーションで従来手法(QAOA)を上回る性能を発揮することを示した。またqubit数や回路の深さを抑えても系統誤差を小さくすることができるということを主張している。</p>
+</li>
+<li><p>Classical versus quantum: Comparing tensor-network-based quantum circuits on Large Hadron Collider data [Jack Y. Araz+, PRA, 2022]: 古典的なTNとTN形式の量子回路で機械学習の性能を比較。古典で同様の性能を出すためには、非常に大きなボンド次元とヒルベルト空間が必要になり、またそうしたとしても勾配を失いやすくより幅広い学習データが必要になることを示した。また古典-量子ハイブリッドアルゴリズムの提案も行なっている。</p>
+</li>
+<li><p>Practical overview of image classification with tensor-network quantum circuits [Diego Guala+, scientific reports, 2023]: テンソルネットワーク変分量子回路を実際の画像分類タスクにどう応用するかを解説している。</p>
+</li>
+<li><p>Towards Quantum Machine Learning with Tensor Networks [William Huggins+, arXiv:1803.11537, 2018]:テンソルネットワーク変分量子回路を用いた機械学習の概要を解説している。テンソルネットワーク形式を用いることのメリットを詳しく説明している。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/" data-id="clo7bbu960000ct098mcy3p3b" data-title="テンソルネットワーク変分量子回路" class="article-share-link">共有</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">有名なテンソルネットワーク形式：MPS, PEPS, MERA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/">テンソルネットワーク変分量子回路</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/">有名なテンソルネットワーク形式：MPS, PEPS, MERA</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/">Visual Studio Codeで使えるショートカット</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88%E4%B8%80%E8%A6%A7/">ターミナルで使えるショートカット一覧</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/git%E3%81%A7%E8%A4%87%E6%95%B0%E3%81%AE%E3%82%A2%E3%82%AB%E3%82%A6%E3%83%B3%E3%83%88%E3%82%92%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">gitで複数のアカウントを管理する方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
