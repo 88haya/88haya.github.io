@@ -17,7 +17,7 @@
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://88haya.github.io/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/extrapolation.png">
 <meta property="article:published_time" content="2023-10-28T12:04:18.803Z">
-<meta property="article:modified_time" content="2023-10-28T15:12:56.751Z">
+<meta property="article:modified_time" content="2023-10-28T17:29:26.366Z">
 <meta property="article:author" content="88haya">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://88haya.github.io/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/extrapolation.png">
@@ -112,7 +112,7 @@
 <!-- tocstop -->
 <h2><span id="概要">概要</span></h2>
 <p>この論文ではentropy extrapolationという手法を提案している extrapolationとは外挿法という意味であり、ある範囲の数値データを基にして、その範囲外の数値を推定することである。</p>
-<p><img src="extrapolation.png" width="500"></p>
+<p><img src="extrapolation.png" width="200"></p>
 <p>この手法は過去の時系列データをMPSに符号化し、エンタングルメントエントロピーが最小になるように未来の値を選ぶことにより行う外挿法の一種である. entropy extrapolationは線形予測法(比較対象とした既存手法)と比べて、関数の未来の値を予測するタスクに対してより正確であり、またノイズを含む関数に強いこと示された。</p>
 <h2><span id="符号化法">符号化法</span></h2>
 <p>n次元のベクトル<span class="math inline">\(y=(y_1, y_2, ..., y_n)\)</span>で表される時系列データをMPSに符号化する方法を述べる。まず<span class="math inline">\(y\)</span>をN qubitからなる量子状態の振幅に対応させる。一般にN qubitからなる量子状態は<span class="math inline">\(|\psi\rangle=\sum_{i_1, i_2, ..., i_N}C_{i_1, i_2, ..., i_N}|i_1i_2...i_N\rangle\)</span>で表されるので<span class="math inline">\(n=2^k\)</span>のとき<span class="math inline">\(k\)</span> qubitからなる量子状態の振幅に<span class="math inline">\(y\)</span>の要素が現れる。例えば<span class="math inline">\(y=(y_1, y_2, ..., y_8)\)</span>のとき<span class="math inline">\(C_{i, j, k}\)</span>は以下のようになる。</p>
@@ -270,20 +270,5 @@
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
