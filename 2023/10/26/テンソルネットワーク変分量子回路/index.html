@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
      crossorigin="anonymous"></script>
   <meta charset="utf-8">
   
@@ -113,43 +113,35 @@
  }
  });
 </script>
-
 <p>量子計算分野への応用の1つとしてテンソルネットワーク変分量子回路という手法を解説します。この分野は(おおよそ)2020年以降から見られ始めた分野であり、まだ完全に確立されてはいません。</p>
-<h1><span id="目次">目次</span></h1><!-- toc -->
-
+<h1><span id="目次">目次</span></h1>
+<!-- toc -->
 <ul>
-<li><a href="#%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF%E3%81%A8%E3%81%AF">テンソルネットワーク変分量子回路とは</a></li>
-<li><a href="#%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B61-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</a></li>
-<li><a href="#%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B62variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</a></li>
-<li><a href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E6%97%A2%E5%AD%98%E7%A0%94%E7%A9%B6">その他の既存研究</a></li>
+<li><a href="#テンソルネットワーク変分量子回路とは">テンソルネットワーク変分量子回路とは</a></li>
+<li><a href="#既存研究1-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</a></li>
+<li><a href="#既存研究2variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</a></li>
+<li><a href="#その他の既存研究">その他の既存研究</a></li>
 </ul>
 <!-- tocstop -->
-
-<h2><span id="テンソルネットワーク変分量子回路とは">テンソルネットワーク変分量子回路とは</span></h2><p>テンソルネットワークはとある状態を効率よく表現する手法だが、ここではテンソルをユニタリに限定し、量子回路を表現することを考える。量子機械学習の分野で登場する変分量子回路アルゴリズムとテンソルネットワークを組み合わせた手法と考えることができる。つまり量子回路中のユニタリ操作のパラメータを変化させながら、量子回路を所望の形に最適化する手法である。テンソルネットワークのボンド次元を$D$、量子回路のqubit(ボンドqubitと呼ぶ)を$n$とすると、$D=2^n$の関係がある。</p>
+<h2><span id="テンソルネットワーク変分量子回路とは">テンソルネットワーク変分量子回路とは</span></h2>
+<p>テンソルネットワークはとある状態を効率よく表現する手法だが、ここではテンソルをユニタリに限定し、量子回路を表現することを考える。量子機械学習の分野で登場する変分量子回路アルゴリズムとテンソルネットワークを組み合わせた手法と考えることができる。つまり量子回路中のユニタリ操作のパラメータを変化させながら、量子回路を所望の形に最適化する手法である。テンソルネットワークのボンド次元を<span class="math inline">\(D\)</span>、量子回路のqubit(ボンドqubitと呼ぶ)を<span class="math inline">\(n\)</span>とすると、<span class="math inline">\(D=2^n\)</span>の関係がある。</p>
 <p>以下にMERAとMPSを量子回路に対応させた例を示す。</p>
-<img src="QTNC.png" width="500">
-
+<p><img src="QTNC.png" width="500"></p>
 <p>次にテンソルネットワーク変分量子回路の利点について説明する。この手法を用いると古典計算機から量子計算器への移行が容易になる。つまり古典で学習したモデルを量子に移行してさらに最適化を行うことができる。またcircuit cutting techniques(<a target="_blank" rel="noopener" href="https://www.nature.com/articles/s41598-023-30258-y">参照</a>)を用いることで少ないqubitの量子計算機への応用が可能になる。さらにテンソルネットワークを用いていることによりヒルベルト空間の増加を抑えられ、様々なテンソルネットワークのテクニックが使える。つまりqubit効率のよりテンソルネットワーク量子回路が使える。また線形演算子のみで構成されるため理論的な理解が豊富である。</p>
-<h2><span id="既存研究1-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</span></h2><p>この手法を用いた既存研究として <strong>Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</strong> について解説する。この論文ではテンソルネットワークで構成した量子回路$\bar U_{\lbrace u, w\rbrace}\approx U$を、ハミルトニアンを対角化するように最適化するタスク(つまり$U^† H U=D$を満たす$U$を探索)を考えている。回路はMERA likeな構成とし、コスト関数$\sigma ^2=Tr(H^2)-\sum_{i=1}^{2^N}[\bar{U^†}H\bar{U}]^2_{(i, i)}$と定義する。</p>
-<p>最適化の方法としては2パターン調べられていて、1つ目がline-search algorithm。これはテンソルを1つずつ最適化していき、他は固定するという手法である。最急降下法(SD)や共役勾配法(CG)の考え方を用いている。例えばSDを用いたときあるユニタリは次のように更新される。$u_{i+1}=e^{-\alpha g_i}u_i$。2つ目がlinearizing algorithmであり、これは最大4次である$\sigma ^4$を$u_i$について線形化することで問題を簡単化している(詳細は省略する)。</p>
-<img src="old1.png" width="500">
-(図は論文より引用)
-
-<h2><span id="既存研究2variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</span></h2><p>この論文ではハイゼンベルグモデル、ハバードモデルの基底状態を表現するテンソルネットワークを変分的に探索するタスクを考えている。既存研究1の方では量子回路をテンソルネットワークとして表現していたが、こちらでは量子状態をテンソルネットワークで表現している。通常のテンソルネットワーク表現vsユニタリのテンソルネットワーク表現、テンソルネットワークの形状での性能比較などが評価されている。コスト関数$F=1-|{\langle \Psi|\psi\rangle}|$としている。ここで$ |\Psi\rangle $は十分大きなボンド次元(~400)でDMRGアルゴリズムを用いて求められたエラーが無視できる程度の量子状態(つまり正解データのようなもの)。 $ |\psi\rangle $は<em>Ansatz</em>によって得られた量子状態。</p>
+<h2><span id="既存研究1-optimization-schemes-for-unitary-tensor-network-circuitreza-haghshnas-prr-2021">既存研究1: Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</span></h2>
+<p>この手法を用いた既存研究として <strong>Optimization schemes for unitary tensor-network circuit[Reza Haghshnas+, PRR, 2021]</strong> について解説する。この論文ではテンソルネットワークで構成した量子回路<span class="math inline">\(\bar U_{\lbrace u, w\rbrace}\approx U\)</span>を、ハミルトニアンを対角化するように最適化するタスク(つまり<span class="math inline">\(U^† H U=D\)</span>を満たす<span class="math inline">\(U\)</span>を探索)を考えている。回路はMERA likeな構成とし、コスト関数<span class="math inline">\(\sigma ^2=Tr(H^2)-\sum_{i=1}^{2^N}[\bar{U^†}H\bar{U}]^2_{(i, i)}\)</span>と定義する。</p>
+<p>最適化の方法としては2パターン調べられていて、1つ目がline-search algorithm。これはテンソルを1つずつ最適化していき、他は固定するという手法である。最急降下法(SD)や共役勾配法(CG)の考え方を用いている。例えばSDを用いたときあるユニタリは次のように更新される。<span class="math inline">\(u_{i+1}=e^{-\alpha g_i}u_i\)</span>。2つ目がlinearizing algorithmであり、これは最大4次である<span class="math inline">\(\sigma ^4\)</span>を<span class="math inline">\(u_i\)</span>について線形化することで問題を簡単化している(詳細は省略する)。</p>
+<p><img src="old1.png" width="500"> (図は論文より引用)</p>
+<h2><span id="既存研究2variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</span></h2>
+<p>この論文ではハイゼンベルグモデル、ハバードモデルの基底状態を表現するテンソルネットワークを変分的に探索するタスクを考えている。既存研究1の方では量子回路をテンソルネットワークとして表現していたが、こちらでは量子状態をテンソルネットワークで表現している。通常のテンソルネットワーク表現vsユニタリのテンソルネットワーク表現、テンソルネットワークの形状での性能比較などが評価されている。コスト関数<span class="math inline">\(F=1-|{\langle \Psi|\psi\rangle}|\)</span>としている。ここで$ |$は十分大きなボンド次元(~400)でDMRGアルゴリズムを用いて求められたエラーが無視できる程度の量子状態(つまり正解データのようなもの)。 $ |$は<em>Ansatz</em>によって得られた量子状態。</p>
 <p>最適化の方法として2パターン調べられている。1つ目は2体ユニタリゲートを1つずつ、他は固定しながら最適化している。つまりDMRG likeな方法である。2つ目は全体の勾配を同時に計算している。CG, L-BFGS-Bなどよく知られた方法である。結論としてはユニタリの方が表現力が高く、コンパクトであるということが述べられている。</p>
-<img src="old2.png" width="500">
-(図は論文より引用)
-
-<h2><span id="その他の既存研究">その他の既存研究</span></h2><p>その他のテンソルネットワーク変分量子回路について論文を以下に挙げる。</p>
+<p><img src="old2.png" width="500"> (図は論文より引用)</p>
+<h2><span id="その他の既存研究">その他の既存研究</span></h2>
+<p>その他のテンソルネットワーク変分量子回路について論文を以下に挙げる。 - Variational quantum simulation of the critical Ising model with symmetry averaging [Troy J. Sevell+, PRA, 2023]：Deep multiscale entanglement renormalization ansatz(DMERA)形式の変分量子回路によるcritical Ising modelのシミュレーションで従来手法(QAOA)を上回る性能を発揮することを示した。またqubit数や回路の深さを抑えても系統誤差を小さくすることができるということを主張している。</p>
 <ul>
-<li><p>Variational quantum simulation of the critical Ising model with symmetry averaging [Troy J. Sevell+, PRA, 2023]：Deep multiscale entanglement renormalization ansatz(DMERA)形式の変分量子回路によるcritical Ising modelのシミュレーションで従来手法(QAOA)を上回る性能を発揮することを示した。またqubit数や回路の深さを抑えても系統誤差を小さくすることができるということを主張している。</p>
-</li>
-<li><p>Classical versus quantum: Comparing tensor-network-based quantum circuits on Large Hadron Collider data [Jack Y. Araz+, PRA, 2022]: 古典的なTNとTN形式の量子回路で機械学習の性能を比較。古典で同様の性能を出すためには、非常に大きなボンド次元とヒルベルト空間が必要になり、またそうしたとしても勾配を失いやすくより幅広い学習データが必要になることを示した。また古典-量子ハイブリッドアルゴリズムの提案も行なっている。</p>
-</li>
-<li><p>Practical overview of image classification with tensor-network quantum circuits [Diego Guala+, scientific reports, 2023]: テンソルネットワーク変分量子回路を実際の画像分類タスクにどう応用するかを解説している。</p>
-</li>
-<li><p>Towards Quantum Machine Learning with Tensor Networks [William Huggins+, arXiv:1803.11537, 2018]:テンソルネットワーク変分量子回路を用いた機械学習の概要を解説している。テンソルネットワーク形式を用いることのメリットを詳しく説明している。</p>
-</li>
+<li><p>Classical versus quantum: Comparing tensor-network-based quantum circuits on Large Hadron Collider data [Jack Y. Araz+, PRA, 2022]: 古典的なTNとTN形式の量子回路で機械学習の性能を比較。古典で同様の性能を出すためには、非常に大きなボンド次元とヒルベルト空間が必要になり、またそうしたとしても勾配を失いやすくより幅広い学習データが必要になることを示した。また古典-量子ハイブリッドアルゴリズムの提案も行なっている。</p></li>
+<li><p>Practical overview of image classification with tensor-network quantum circuits [Diego Guala+, scientific reports, 2023]: テンソルネットワーク変分量子回路を実際の画像分類タスクにどう応用するかを解説している。</p></li>
+<li><p>Towards Quantum Machine Learning with Tensor Networks [William Huggins+, arXiv:1803.11537, 2018]:テンソルネットワーク変分量子回路を用いた機械学習の概要を解説している。テンソルネットワーク形式を用いることのメリットを詳しく説明している。</p></li>
 </ul>
 
       
