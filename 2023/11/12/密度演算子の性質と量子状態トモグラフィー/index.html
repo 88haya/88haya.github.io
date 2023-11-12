@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
+     crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  
+  
+  <title>密度演算子の性質と量子状態トモグラフィー | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="密度演算子の性質と量子状態トモグラフィーについてまとめました。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密度演算子の性質と量子状態トモグラフィー">
+<meta property="og:url" content="https://88haya.github.io/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="密度演算子の性質と量子状態トモグラフィーについてまとめました。">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2023-11-12T12:55:35.000Z">
+<meta property="article:modified_time" content="2023-11-12T13:14:20.796Z">
+<meta property="article:author" content="88haya">
+<meta property="article:tag" content="量子情報">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-密度演算子の性質と量子状態トモグラフィー" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/" class="article-date">
+  <time class="dt-published" datetime="2023-11-12T12:55:35.000Z" itemprop="datePublished">2023-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      密度演算子の性質と量子状態トモグラフィー
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ inlineMath: [['$', '$'] ],
+ displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+ }
+ });
+</script>
+<p>密度演算子の性質と量子状態トモグラフィー(Quantum state tomography)についてまとめました。</p>
+<h1><span id="目次">目次</span></h1>
+<!-- toc -->
+<ul>
+<li><a href="#密度演算子">密度演算子</a>
+<ul>
+<li><a href="#密度演算子とは">密度演算子とは</a></li>
+<li><a href="#密度演算子の性質">密度演算子の性質</a></li>
+</ul></li>
+<li><a href="#quantum-state-tomography-量子状態トモグラフィー">Quantum state tomography (量子状態トモグラフィー)</a>
+<ul>
+<li><a href="#概要">概要</a></li>
+<li><a href="#手法">手法</a></li>
+</ul></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="密度演算子">密度演算子</span></h2>
+<h3><span id="密度演算子とは">密度演算子とは</span></h3>
+<p>量子状態はヒルベルト空間上の単位ベクトルとして表せる状態を純粋状態、表せない状態を混合状態と呼ぶ。純粋状態は原理的に可能な限りの情報を得られている状態であり、混合状態は知識不足からくる。混合状態は外界とエンタングルしていると考えることもできる。密度演算子<span class="math inline">\(\rho\)</span>は純粋状態と混合状態を統一的に表現できる。</p>
+<p>密度演算子による混合状態の表現を2パターン説明する。</p>
+<ol type="1">
+<li><p>確率混合によって広がった状態の記述 例えば確率1/2で<span class="math inline">\(\ket{0}\)</span>, 確率1/2で<span class="math inline">\(\ket{1}\)</span>を用意するという場合である。状態の確率混合を<span class="math inline">\(\{p_i, \ket{\psi_i}\}\)</span>としたとき密度演算子は <span class="math display">\[\rho=\sum_i p_i\ket{\psi_i}\bra{\psi_i}\]</span> と記述できる。</p></li>
+<li><p>純粋状態の部分系の記述 部分系<span class="math inline">\(S\)</span>と環境系<span class="math inline">\(E\)</span>からなる閉じた系(純粋状態)で<span class="math inline">\(S\)</span>の密度演算子は <span class="math display">\[\rho=\operatorname{Tr}_E{\rho_{SE}} \]</span> と記述できる。つまり全体系が純粋状態であっても部分系<span class="math inline">\(S\)</span>は環境系<span class="math inline">\(E\)</span>と相互作用しているため、部分系は一般に混合状態になる。</p></li>
+</ol>
+<h3><span id="密度演算子の性質">密度演算子の性質</span></h3>
+<p>密度演算子の性質を以下に列挙する。(証明は省略する) 1. 物理量<span class="math inline">\(A=\sum_aaP_a (P_a=\ket{v_a}\bra{v_a})\)</span>の測定を考えた時<span class="math inline">\(Pr[A=a|\rho]=\operatorname{Tr}(\rho P_a)=\bra{v_a}\rho\ket{v_a}\)</span> 2. 半正定値性：<span class="math inline">\(\rho \geq 0\)</span> 3. <span class="math inline">\(\operatorname{Tr}\rho=1\)</span> (確率の和が1であることに由来) 4. <span class="math inline">\(\mathbb{E}_\rho[A]=\operatorname{Tr}(\rho A)\)</span> 5. 密度演算子の集合<span class="math inline">\(\mathcal{S(H)}=\{\rho \in \mathcal{L(H)_h | \rho \geq 0, \operatorname{Tr}\rho = 1}\}\)</span> (<span class="math inline">\(\mathcal{L(H)_h}\)</span>は<span class="math inline">\(\mathcal{H}\)</span>上のすべてのエルミート演算子の集合) 6. <span class="math inline">\(\rho\)</span>は純粋状態<span class="math inline">\(\Leftrightarrow \rho=\rho ^2 \Leftrightarrow \operatorname{Tr}\rho^2=1 \Leftrightarrow \rho\)</span>は固有値1と0(縮退している)を持つ 7. ダイナミクスはvon Neumann方程式<span class="math inline">\(i\hbar \frac{\partial}{\partial x} \rho=[H, \rho]\)</span>で与えられる 8. 時間発展は<span class="math inline">\(\rho \rightarrow \rho&#39;=U\rho U^{\dag}\)</span> 9. 純粋状態<span class="math inline">\(\Leftrightarrow \operatorname{rank}\rho=1\)</span>, 混合状態<span class="math inline">\(\Leftrightarrow \operatorname{rank}\rho&gt;1\)</span>(略証：<span class="math inline">\(\operatorname{rank}\rho=\operatorname{dim}(\operatorname{img}(A))=\)</span>非ゼロの特異値の数)</p>
+<h2><span id="quantum-state-tomography-量子状態トモグラフィー">Quantum state tomography (量子状態トモグラフィー)</span></h2>
+<h3><span id="概要">概要</span></h3>
+<p>tomographyとは、はっきりとした日本語訳は存在しないが量子情報の文脈では「何かを特定すること」という意味で使われることが多い。量子状態トモグラフィーとは、ある未知の量子状態から得られる複数の測定値を用いて、その量子状態に対する密度演算子<span class="math inline">\(\rho\)</span>を推定する手法である。複数の射影演算子によって得られた測定値から統計的手法を用いて<span class="math inline">\(\rho\)</span>を再構成する。</p>
+<h3><span id="手法">手法</span></h3>
+<p>量子状態トモグラフィーには様々な手法が存在するが、ここでは最尤推定を用いる手法を説明する。以下に手順を示す。</p>
+<ol type="1">
+<li>測定に用いる演算子を6つ用意する(例えばPOVMなど)。ブロッホ球で考えたとき、3つの軸に射影する演算子と考えると分かりやすい。それぞれ<span class="math inline">\(N_H, N_D, N_R\)</span>とする。</li>
+<li>用意した密度演算子からそれぞれの演算子に対して測定値<span class="math inline">\(N_i\)</span>を得る(複数回の測定より期待値を得る)。</li>
+<li>tunable stateとして <span class="math display">\[\rho_{test}=\frac{T^{\dag}T}{\operatorname{Tr}(T^\dag T)}, T=\begin{bmatrix}t_1 &amp; 0 \\ t_3+it_4 &amp; t_2 \end{bmatrix}\]</span> を用意し、そこから期待値<span class="math inline">\(\bar{N_i}\)</span>を得る。</li>
+<li>最尤推定により<span class="math inline">\(t_1, ..., t_4\)</span>を得る。以下に最尤推定の方法を述べる。 正規分布より以下の確率分布が得られる。 <span class="math display">\[p(N_x;\rho_{test})=e^{-\frac{(N_x-\bar{N_x})^2}{2 \bar{N_x}}}\]</span> よって<span class="math inline">\(\rho_{test}\)</span>より得られた測定値は以下を最大化する。 <span class="math display">\[f(N_H, ..., N_R; \rho_{test})=e^{-\frac{(N_H-\bar{N_H})^2}{2 \bar{N_H}}}...e^{-\frac{(N_R-\bar{N_R})^2}{2 \bar{N_R}}}\]</span> 実際の計算では以下の関数を最大化させれば良い。 <span class="math display">\[l(N_H, ..., N_R;\rho_{test})=-\sum_i\frac{(N_i-\bar{N_i})^2}{2 \bar{N_i}}\]</span></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/" data-id="clovi09dm00002m092oqrf2w1" data-title="密度演算子の性質と量子状態トモグラフィー" class="article-share-link">共有</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">【論文備忘録】Entropy Extrapolationと符号化</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a> <a href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" style="font-size: 10px;">量子情報</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">11月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/">密度演算子の性質と量子状態トモグラフィー</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/">【論文備忘録】Entropy Extrapolationと符号化</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/">テンソルネットワーク変分量子回路</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/">有名なテンソルネットワーク形式：MPS, PEPS, MERA</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/">Visual Studio Codeで使えるショートカット</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
