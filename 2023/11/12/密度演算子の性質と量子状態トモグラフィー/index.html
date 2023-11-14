@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
      crossorigin="anonymous"></script>
   <meta charset="utf-8">
   
@@ -16,7 +16,7 @@
 <meta property="og:description" content="密度演算子の性質と量子状態トモグラフィーについてまとめました。">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-11-12T12:55:35.000Z">
-<meta property="article:modified_time" content="2023-11-12T14:11:14.590Z">
+<meta property="article:modified_time" content="2023-11-14T04:57:09.160Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="量子情報">
 <meta name="twitter:card" content="summary">
@@ -124,6 +124,7 @@
 <li><a href="#概要">概要</a></li>
 <li><a href="#手法">手法</a></li>
 </ul></li>
+<li><a href="#参考文献">参考文献</a></li>
 </ul>
 <!-- tocstop -->
 <h2><span id="密度演算子">密度演算子</span></h2>
@@ -158,6 +159,11 @@
 <li>tunable stateとして <span class="math display">\[\rho_{test}=\frac{T^{†}T}{\operatorname{Tr}(T^† T)}, T=\begin{bmatrix}t_1 &amp; 0 \\ t_3+it_4 &amp; t_2 \end{bmatrix}\]</span> を用意し、そこから期待値<span class="math inline">\(\bar{N_i}\)</span>を得る。</li>
 <li>最尤推定により<span class="math inline">\(t_1, ..., t_4\)</span>を得る。以下に最尤推定の方法を述べる。 正規分布より以下の確率分布が得られる。 <span class="math display">\[p(N_x;\rho_{test})=e^{-\frac{(N_x-\bar{N_x})^2}{2 \bar{N_x}}}\]</span> よって<span class="math inline">\(\rho_{test}\)</span>より得られた測定値は以下を最大化する。 <span class="math display">\[f(N_H, ..., N_R; \rho_{test})=e^{-\frac{(N_H-\bar{N_H})^2}{2 \bar{N_H}}}...e^{-\frac{(N_R-\bar{N_R})^2}{2 \bar{N_R}}}\]</span> 実際の計算では以下の関数を最大化させれば良い。 <span class="math display">\[l(N_H, ..., N_R;\rho_{test})=-\sum_i\frac{(N_i-\bar{N_i})^2}{2 \bar{N_i}}\]</span></li>
 </ol>
+<h2><span id="参考文献">参考文献</span></h2>
+<ul>
+<li>石坂智, 小川朋宏, 河内亮周, 木村元, 林正人, 量子情報科学入門, 共立出版</li>
+<li>http://research.physics.illinois.edu/QI/Photonics/tomography/</li>
+</ul>
 
       
     </div>
@@ -173,6 +179,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">次の記事</strong>
+      <div class="article-nav-title">
+        
+          【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列
+        
+      </div>
+    </a>
   
   
     <a href="/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
@@ -207,7 +222,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">タグクラウド</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a> <a href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" style="font-size: 10px;">量子情報</a>
+      <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a> <a href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" style="font-size: 15px;">量子情報</a>
     </div>
   </div>
 
@@ -229,6 +244,10 @@
       <ul>
         
           <li>
+            <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/">【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列</a>
+          </li>
+        
+          <li>
             <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/">密度演算子の性質と量子状態トモグラフィー</a>
           </li>
         
@@ -242,10 +261,6 @@
         
           <li>
             <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/">有名なテンソルネットワーク形式：MPS, PEPS, MERA</a>
-          </li>
-        
-          <li>
-            <a href="/2023/10/11/Visual-Studio-Code%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8B%E3%82%B7%E3%83%A7%E3%83%BC%E3%83%88%E3%82%AB%E3%83%83%E3%83%88/">Visual Studio Codeで使えるショートカット</a>
           </li>
         
       </ul>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
+     crossorigin="anonymous"></script>
+  <meta charset="utf-8">
+  
+  
+  <title>【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列 | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ユニタリで表現できない一般状態変化(量子通信路)の等価な4つの表現としてCPTP写像、Kraus表現、Stinespring表現、Choi行列をまとめました。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【一般状態変化・量子通信路】CPTP写像&#x2F;Kraus表現&#x2F;Stinespring表現&#x2F;Choi行列">
+<meta property="og:url" content="https://88haya.github.io/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="ユニタリで表現できない一般状態変化(量子通信路)の等価な4つの表現としてCPTP写像、Kraus表現、Stinespring表現、Choi行列をまとめました。">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://88haya.github.io/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/choi.jpg">
+<meta property="og:image" content="https://88haya.github.io/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/choi2.png">
+<meta property="article:published_time" content="2023-11-14T04:44:55.000Z">
+<meta property="article:modified_time" content="2023-11-14T05:44:28.152Z">
+<meta property="article:author" content="88haya">
+<meta property="article:tag" content="量子情報">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://88haya.github.io/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/choi.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-【一般状態変化・量子通信路】CPTP写像-Kraus表現-Stinespring表現-Choi行列" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/" class="article-date">
+  <time class="dt-published" datetime="2023-11-14T04:44:55.000Z" itemprop="datePublished">2023-11-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+ MathJax.Hub.Config({
+ tex2jax: {
+ inlineMath: [['$', '$'] ],
+ displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+ }
+ });
+</script>
+<p>ユニタリで表現できない系、つまり開放量子系も含めた一般の時間発展(一般状態変化または量子通信路とも言う)の記述としてCPTP写像、Kraus表現、Stinespring表現、Choi行列について説明する。</p>
+<h1><span id="目次">目次</span></h1>
+<!-- toc -->
+<ul>
+<li><a href="#一般状態変化量子通信路の概要">一般状態変化・量子通信路の概要</a></li>
+<li><a href="#cptp写像">CPTP写像</a>
+<ul>
+<li><a href="#kraus表現">Kraus表現</a></li>
+<li><a href="#stinespring表現">Stinespring表現</a></li>
+<li><a href="#choi行列">Choi行列</a></li>
+</ul></li>
+<li><a href="#参考文献">参考文献</a></li>
+</ul>
+<!-- tocstop -->
+<h2><span id="一般状態変化量子通信路の概要">一般状態変化・量子通信路の概要</span></h2>
+<p>閉じた系の場合、密度演算子<span class="math inline">\(\rho\)</span>の時間発展は<span class="math inline">\(\rho \rightarrow \rho&#39;=U\rho U^{†}\)</span>のようにユニタリ変換によって与えられる。ただし対象系<span class="math inline">\(S\)</span>が環境系<span class="math inline">\(E\)</span>と相互作用する場合など閉じた系でない場合、一般に時間発展はユニタリ変換によって表されない。ここでは開放量子系も含めた一般の時間発展(量子通信路とも呼ばれる)の記述について説明する。</p>
+<p>一般の時間発展には4つの同値な表現がある。</p>
+<ol type="1">
+<li><p>CPTP写像：量子通信路の公理的な記述</p></li>
+<li><p>Kraus表現：数学的に扱いやすい</p></li>
+<li><p>Stinespring表現：ユニタリ発展に対応</p></li>
+<li><p>Choi行列：Kraus表現と違ってunique</p></li>
+</ol>
+<p>以下では時間発展を写像<span class="math inline">\(\varepsilon:\rho\in \mathcal{L(H_A})\mapsto \varepsilon(\rho)\in \mathcal{L(H_B)}\)</span>として、それぞれの記述について説明する。</p>
+<h2><span id="cptp写像">CPTP写像</span></h2>
+<p><strong>定義</strong></p>
+<p>以下の(i), (ii), (iii)を満たす写像<span class="math inline">\(\varepsilon\)</span></p>
+<ol type="i">
+<li><p>アフィン性(線形性)：<span class="math inline">\(\varepsilon(p\rho+(1-p)\sigma)=p\varepsilon(\rho)+(1-p)\varepsilon(\sigma)\)</span><br>
+確率<span class="math inline">\(p\)</span>で<span class="math inline">\(\rho\)</span>、<span class="math inline">\(1-p\)</span>で<span class="math inline">\(\sigma\)</span>を用意する場合に満たされて欲しい性質</p></li>
+<li><p>トレース保存(TP)：<span class="math inline">\(\operatorname{Tr}(\varepsilon(\rho))=1\)</span><br>
+密度演算子の性質 <span class="math inline">\(\operatorname{Tr}\rho=1\)</span> (確率の和が1であること)に由来</p></li>
+<li><p>完全正写像(CP)：任意の系<span class="math inline">\(\mathcal{H_C}\)</span>と<span class="math inline">\(\forall \rho_{AC} \in \mathcal{L(H_A \bigotimes H_C)}\)</span>について<span class="math inline">\((\varepsilon \bigotimes \mathbb{I}_C)(\rho_{AC})\geq0\)</span><br>
+密度演算子の半正定値性：<span class="math inline">\(\rho \geq 0\)</span>に由来</p></li>
+</ol>
+<p>CPTP写像は量子通信路の公理的な記述である。 密度演算子の性質の詳細についてはこちら(<a href="https://88haya.github.io/2023/11/12/密度演算子の性質と量子状態トモグラフィー/#密度演算子の性質">密度演算子の性質</a>)を参照。</p>
+<h3><span id="kraus表現">Kraus表現</span></h3>
+<p>次のような定理が存在する(詳細は参考文献を参照)。</p>
+<p><span class="math inline">\(\varepsilon\)</span>が完全正写像<span class="math inline">\(\Leftrightarrow l\geq d_Ad_B\)</span>個の線形演算子<span class="math inline">\(V_k:\mathcal{H_A}\rightarrow\mathcal{H_B}\)</span>が存在し<span class="math inline">\(\varepsilon{(\rho)}=\sum_{k=1}^{l}V_k\rho V_k^{†}\)</span></p>
+<p>さらにトレース保存の条件を加えると<span class="math inline">\(\sum_kV_k^{†}V_k=\mathbb{I}\)</span></p>
+<p>よって以下のようなKraus表現が得られる</p>
+<p><strong>定義</strong><br>
+以下を満たす写像<span class="math inline">\(\varepsilon\)</span><br>
+<span class="math inline">\(\varepsilon{(\rho)}=\sum_{k=1}^{l}V_k\rho V_k^{†}\)</span><br>
+<span class="math inline">\(\sum_kV_k^{†}V_k=\mathbb{I}\)</span></p>
+<p>Kraus表現は一意ではないことが知られている。</p>
+<h3><span id="stinespring表現">Stinespring表現</span></h3>
+<p>初期状態<span class="math inline">\(\rho_A, |{0}\rangle_E\)</span>がユニタリによって時間発展すると考える。</p>
+<p><strong>定義</strong><br>
+ユニタリ変換<span class="math inline">\(U:\mathcal{H_A}\rightarrow \mathcal{H_B} \bigotimes \mathcal{H}_E\)</span>を用いて<br>
+<span class="math inline">\(\varepsilon(\rho)=\operatorname{Tr}_E(U\rho U^{†})\)</span></p>
+<p>これは任意のCPTP写像が、適切な環境系との相互作用により実現することができるということを述べている。</p>
+<h3><span id="choi行列">Choi行列</span></h3>
+<p><strong>定義</strong><br>
+<span class="math inline">\(d:=\operatorname{dim}\mathcal{H_A}=\operatorname{dim}\mathcal{H_R}\)</span>となる参照系<span class="math inline">\(\mathcal{H_R}\)</span>を考える。<br>
+ベル状態(最もエンタングルした状態)<span class="math inline">\(|{\Phi}\rangle:=\frac{1}{\sqrt{d}}\sum_{i=1}^{d}|{i}\rangle \bigotimes |{i}\rangle \in \mathcal{H_R} \bigotimes \mathcal{H_A}\)</span>を通信路<span class="math inline">\(\mathbb{I}_R \bigotimes \varepsilon\)</span>に入力したときの出力<span class="math inline">\(M(\varepsilon):=(\mathbb{I}_R \bigotimes \varepsilon)(|{\Phi}\rangle\langle{\Phi}|)\)</span>を考えた時、</p>
+<p><span class="math inline">\(\varepsilon\)</span>はCPより<span class="math inline">\(M(\varepsilon)\geq 0\)</span>, TPより<span class="math inline">\(\operatorname{Tr}_BM(\varepsilon)=\mathbb{I}_R/d\)</span>という2つの性質が成り立つ。 このような<span class="math inline">\(M(\varepsilon)\)</span>をChoi行列と定義する。</p>
+<p><img src="choi.jpg" width="500"></p>
+<p>Choi行列は定義のままだと理解しにくいので以下に直感的な見通しを与える。</p>
+<p><span class="math inline">\(M(\varepsilon)=(\mathbb{I}_R \bigotimes \varepsilon)(|{\Phi}\rangle\langle{\Phi}|)=\frac{1}{d}\sum_{i=1}^d \sum_{j=1}^d|{i}\rangle\langle{j}|\bigotimes\varepsilon(|{i}\rangle\langle{j}|)=\frac{1}{d}[(i, j)\text{成分に}\varepsilon(|{i}\rangle\langle{j}|)\text{が並ぶ行列}]\)</span></p>
+<p>つまりChoi行列は各ブロックに<span class="math inline">\(\mathcal{L(H_A)}\)</span>の基底<span class="math inline">\(|{i}\rangle\langle{j}|\)</span>の行き先を並べた行列であることが分かる。つまりChoi行列は<span class="math inline">\(\varepsilon\)</span>の情報を全て含むと言える。</p>
+<p><img src="choi2.png" width="300"></p>
+<p>時間発展は以下のように記述できる。<br>
+<span class="math inline">\(\varepsilon(\rho)=\operatorname{Tr}_R[(\rho^T\bigotimes \mathbb{I}_A)M(\varepsilon)]\)</span></p>
+<p><strong>略証</strong><br>
+<span class="math inline">\(\varepsilon(\rho)=\varepsilon(\sum_{i, j}\rho_{i, j}|{i}\rangle\langle{j}|)=\sum_{i, j}\rho_{i, j}\varepsilon(|{i}\rangle\langle{i}|)\)</span><br>
+<span class="math inline">\([(\rho^T\bigotimes \mathbb{I}_A)M(\varepsilon)]_{(i, j)}=\sum_k(\rho^T_{i, k}\bigotimes \mathbb{I}_A)\varepsilon(|{k}\rangle\langle{j}|)\)</span>より<br>
+<span class="math inline">\(\operatorname{Tr}_R[(\rho^T\bigotimes \mathbb{I}_A)M(\varepsilon)]=\sum_{i, k}(\rho^T_{i, k})\varepsilon(|{k}\rangle\langle{i}|)=\sum_{i, k}(\rho_{k, i})\varepsilon(|{k}\rangle\langle{i}|)\)</span></p>
+<p>確率分布は以下のように記述できる。<br>
+入力を<span class="math inline">\(\rho_\alpha\)</span>, 測定に用いる演算子を<span class="math inline">\(E_\beta\)</span>としたとき、<br>
+<span class="math inline">\(P_{\varepsilon}(\beta|\alpha)=\operatorname{Tr}_A[E_\beta\varepsilon(\rho_\alpha)]=\operatorname{Tr}_{A, sR}[(\rho^T_\alpha \bigotimes E_\beta)M_\varepsilon]\)</span></p>
+<h2><span id="参考文献">参考文献</span></h2>
+<ul>
+<li>石坂智, 小川朋宏, 河内亮周, 木村元, 林正人, 量子情報科学入門, 共立出版</li>
+<li>小川朋宏, http://www.quest.lab.uec.ac.jp/ogawa/qmath2020/qmath20200715.pdf, 電気通信大学</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/" data-id="cloxw4e6c0000jygo14kqfdxa" data-title="【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列" class="article-share-link">共有</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">密度演算子の性質と量子状態トモグラフィー</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a> <a href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" style="font-size: 15px;">量子情報</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">11月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/">【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/">密度演算子の性質と量子状態トモグラフィー</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/">【論文備忘録】Entropy Extrapolationと符号化</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/">テンソルネットワーク変分量子回路</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/13/%E6%9C%89%E5%90%8D%E3%81%AA%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%BD%A2%E5%BC%8F%EF%BC%9AMPS-PEPS-MERA/">有名なテンソルネットワーク形式：MPS, PEPS, MERA</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>
