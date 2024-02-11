@@ -14,7 +14,7 @@
 <meta property="og:description" content="Hexoで記事に数式を挿入する方法を紹介します.">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-08-25T15:56:19.000Z">
-<meta property="article:modified_time" content="2023-08-25T15:56:40.909Z">
+<meta property="article:modified_time" content="2024-02-11T13:17:08.131Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -108,31 +108,31 @@
  }
  });
 </script>
-
 <p>MarkdownでHexoの記事を書いているとき数式を入力するに少し苦戦したのでまとめておきます.</p>
-<h1><span id="目次">目次</span></h1><!-- toc -->
-
+<h1 id="目次">目次</h1>
+<!-- toc -->
 <ul>
-<li><a href="#%E6%96%B9%E6%B3%95">方法</a><ul>
-<li><a href="#%E6%BA%96%E5%82%99">準備</a></li>
-<li><a href="#%E6%95%B0%E5%BC%8F%E3%81%AE%E8%A8%98%E8%BF%B0">数式の記述</a></li>
-</ul>
-</li>
+<li><a href="#--">方法</a>
+<ul>
+<li><a href="#--">準備</a></li>
+<li><a href="#-----">数式の記述</a></li>
+<li><a href="#2024-02-11--">2024/02/11追記</a></li>
+</ul></li>
 </ul>
 <!-- tocstop -->
-
-<h2><span id="方法">方法</span></h2><h3><span id="準備">準備</span></h3><p>MathJaxというライブラリを用います.<br>以下のコードをMarkdownの記事の上にコピペします.</p>
+<h2 id="方法">方法</h2>
+<h3 id="準備">準備</h3>
+<p>MathJaxというライブラリを用います. 以下のコードをMarkdownの記事の上にコピペします.</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/javascript&quot; async src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/x-mathjax-config&quot;&gt;</span><br><span class="line"> MathJax.Hub.Config(&#123;</span><br><span class="line"> tex2jax: &#123;</span><br><span class="line"> inlineMath: [[&#x27;$&#x27;, &#x27;$&#x27;] ],</span><br><span class="line"> displayMath: [ [&#x27;$$&#x27;,&#x27;$$&#x27;], [&quot;\\[&quot;,&quot;\\]&quot;] ]</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-
-<h3><span id="数式の記述">数式の記述</span></h3><p>あとは記事の中でTexの記法で数式を記述するだけです.</p>
-<p>$$で囲むと数式を独立させることができます.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $$</span><br></pre></td></tr></table></figure>
-<p>(実際にMarkdownで入力する際には_で囲った部分が斜体になるのでバックスラッシュでエスケープ(アンダーバーの前にバックスラッシュを入力)してください.)</p>
-<p><strong>出力</strong><br>$$ \int^{b}_{a}f(x)dx = \int^{c}_{a}f(x)dx + \int^{b}_{c}f(x)dx $$</p>
-<p>$で囲むと数式を文の中に埋め込めます.</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">積分の公式として$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $は重要である.</span><br></pre></td></tr></table></figure>
-
-<p><strong>出力</strong><br>積分の公式として$ \int^{b}_{a}f(x)dx = \int^{c}_{a}f(x)dx + \int^{b}_{c}f(x)dx $は重要である.</p>
+<h3 id="数式の記述">数式の記述</h3>
+<p>あとは記事の中でTexの記法で数式を記述するだけです.</p>
+<p>$$で囲むと数式を独立させることができます. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $$</span><br></pre></td></tr></table></figure> (実際にMarkdownで入力する際には_で囲った部分が斜体になるのでバックスラッシュでエスケープ(アンダーバーの前にバックスラッシュを入力)してください.)</p>
+<p><strong>出力</strong> <span class="math display">\[ \int^{b}\_{a}f(x)dx = \int^{c}\_{a}f(x)dx + \int^{b}\_{c}f(x)dx \]</span></p>
+<p>$で囲むと数式を文の中に埋め込めます. <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">積分の公式として$ \int^&#123;b&#125;_&#123;a&#125;f(x)dx = \int^&#123;c&#125;_&#123;a&#125;f(x)dx + \int^&#123;b&#125;_&#123;c&#125;f(x)dx $は重要である.</span><br></pre></td></tr></table></figure></p>
+<p><strong>出力</strong> 積分の公式として$ ^{b}_{a}f(x)dx = ^{c}_{a}f(x)dx + ^{b}_{c}f(x)dx $は重要である.</p>
+<h3 id="追記">2024/02/11追記</h3>
+<p>上記の方法では数式がちゃんと表示されたりされなかったり、更新したらちゃんと治ったり治らなかったりと安定しなかったので他の方法を探した結果、以下の方法で解消しました。</p>
+<p>まずhexoのメインディレクトリで <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure> 次に「node_modules/hexo-renderer-mathjax/mathjax.html」という」ファイルの中で <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure> を追加します。元々同様の記述がある場合はそれを削除します。</p>
 
       
     </div>
@@ -279,20 +279,5 @@
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
