@@ -14,7 +14,7 @@
 <meta property="og:description" content="Hexoで記事に数式を挿入する方法を紹介します.">
 <meta property="og:locale" content="ja_JP">
 <meta property="article:published_time" content="2023-08-25T15:56:19.000Z">
-<meta property="article:modified_time" content="2024-02-11T13:17:08.131Z">
+<meta property="article:modified_time" content="2024-02-11T13:31:14.342Z">
 <meta property="article:author" content="88haya">
 <meta property="article:tag" content="Hexo">
 <meta name="twitter:card" content="summary">
@@ -133,6 +133,7 @@
 <h3 id="追記">2024/02/11追記</h3>
 <p>上記の方法では数式がちゃんと表示されたりされなかったり、更新したらちゃんと治ったり治らなかったりと安定しなかったので他の方法を探した結果、以下の方法で解消しました。</p>
 <p>まずhexoのメインディレクトリで <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-mathjax --save</span><br></pre></td></tr></table></figure> 次に「node_modules/hexo-renderer-mathjax/mathjax.html」という」ファイルの中で <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure> を追加します。元々同様の記述がある場合はそれを削除します。</p>
+<p>"hexo deploy"して数式が表示されることを確認します。数式が表示されていないときは表示されるまで繰り返し"hexo deploy"するとなぜか治ります。</p>
 
       
     </div>
@@ -279,20 +280,5 @@
 
 
   </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
