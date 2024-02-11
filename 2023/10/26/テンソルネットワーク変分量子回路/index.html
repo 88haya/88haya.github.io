@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1986162274632709"
-     crossorigin="anonymous"></script>
   <meta charset="utf-8">
   
   
@@ -19,7 +17,7 @@
 <meta property="og:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/old1.png">
 <meta property="og:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/old2.png">
 <meta property="article:published_time" content="2023-10-26T14:26:13.714Z">
-<meta property="article:modified_time" content="2023-10-28T07:12:02.625Z">
+<meta property="article:modified_time" content="2023-11-30T07:12:24.781Z">
 <meta property="article:author" content="88haya">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://88haya.github.io/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/QTNC.png">
@@ -133,8 +131,8 @@
 <p>最適化の方法としては2パターン調べられていて、1つ目がline-search algorithm。これはテンソルを1つずつ最適化していき、他は固定するという手法である。最急降下法(SD)や共役勾配法(CG)の考え方を用いている。例えばSDを用いたときあるユニタリは次のように更新される。<span class="math inline">\(u_{i+1}=e^{-\alpha g_i}u_i\)</span>。2つ目がlinearizing algorithmであり、これは最大4次である<span class="math inline">\(\sigma ^4\)</span>を<span class="math inline">\(u_i\)</span>について線形化することで問題を簡単化している(詳細は省略する)。</p>
 <p><img src="old1.png" width="500"> (図は論文より引用)</p>
 <h2><span id="既存研究2variational-power-of-quantum-circuit-tensor-networkreza-haghshenas-prx-2022">既存研究2：Variational Power of Quantum Circuit Tensor Network[Reza Haghshenas+, PRX, 2022]</span></h2>
-<p>この論文ではハイゼンベルグモデル、ハバードモデルの基底状態を表現するテンソルネットワークを変分的に探索するタスクを考えている。既存研究1の方では量子回路をテンソルネットワークとして表現していたが、こちらでは量子状態をテンソルネットワークで表現している。通常のテンソルネットワーク表現vsユニタリのテンソルネットワーク表現、テンソルネットワークの形状での性能比較などが評価されている。コスト関数<span class="math inline">\(F=1-|{\langle \Psi|\psi\rangle}|\)</span>としている。ここで$ |$は十分大きなボンド次元(~400)でDMRGアルゴリズムを用いて求められたエラーが無視できる程度の量子状態(つまり正解データのようなもの)。 $ |$は<em>Ansatz</em>によって得られた量子状態。</p>
-<p>最適化の方法として2パターン調べられている。1つ目は2体ユニタリゲートを1つずつ、他は固定しながら最適化している。つまりDMRG likeな方法である。2つ目は全体の勾配を同時に計算している。CG, L-BFGS-Bなどよく知られた方法である。結論としてはユニタリの方が表現力が高く、コンパクトであるということが述べられている。</p>
+<p>この論文ではハイゼンベルグモデル、ハバードモデルの基底状態を表現するテンソルネットワークを変分的に探索するタスクを考えている。既存研究1の方では量子回路をテンソルネットワークとして表現していたが、こちらでは量子状態をテンソルネットワークで表現している。通常のテンソルネットワーク表現(全ての要素が独立していてdenseなテンソル)vsユニタリのテンソルネットワーク表現(よりsparse)、テンソルネットワークの形状での性能比較、必要なパラメータ数、最適化手法などが評価されている。コスト関数<span class="math inline">\(F=1-|{\langle \Psi|\psi\rangle}|\)</span>としている。ここで$ |$は十分大きなボンド次元(~400)でDMRGアルゴリズムを用いて求められたエラーが無視できる程度の量子状態(つまり正解データのようなもの)。 $ |$は<em>Ansatz</em>によって得られた量子状態。</p>
+<p>最適化の方法として2パターン調べられている。1つ目は2体ユニタリゲートを1つずつ、他は固定しながら最適化している。つまりDMRG likeな方法である。2つ目は全体の勾配を同時に計算している。CG, L-BFGS-Bなどよく知られた方法である。結論としてはユニタリの方が表現力が高く、コンパクトであるということが述べられている。基底状態シミュレーションにおける量子優位性を示唆している。</p>
 <p><img src="old2.png" width="500"> (図は論文より引用)</p>
 <h2><span id="その他の既存研究">その他の既存研究</span></h2>
 <p>その他のテンソルネットワーク変分量子回路について論文を以下に挙げる。 - Variational quantum simulation of the critical Ising model with symmetry averaging [Troy J. Sevell+, PRA, 2023]：Deep multiscale entanglement renormalization ansatz(DMERA)形式の変分量子回路によるcritical Ising modelのシミュレーションで従来手法(QAOA)を上回る性能を発揮することを示した。またqubit数や回路の深さを抑えても系統誤差を小さくすることができるということを主張している。</p>
@@ -253,7 +251,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2023 88haya<br>
+      &copy; 2024 88haya<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
