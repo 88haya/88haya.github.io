@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>量子フィッシャー情報量と量子クラメール・ラオ不等式 | 88haya&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="量子フィッシャー情報量と量子クラメール・ラオ不等式について、それぞれの古典対応から導入し、基本事項をまとめました。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="量子フィッシャー情報量と量子クラメール・ラオ不等式">
+<meta property="og:url" content="https://88haya.github.io/2024/02/13/%E9%87%8F%E5%AD%90%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC%E6%83%85%E5%A0%B1%E9%87%8F%E3%81%A8%E9%87%8F%E5%AD%90%E3%82%AF%E3%83%A9%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%A9%E3%82%AA%E4%B8%8D%E7%AD%89%E5%BC%8F/index.html">
+<meta property="og:site_name" content="88haya&#39;s blog">
+<meta property="og:description" content="量子フィッシャー情報量と量子クラメール・ラオ不等式について、それぞれの古典対応から導入し、基本事項をまとめました。">
+<meta property="og:locale" content="ja_JP">
+<meta property="article:published_time" content="2024-02-13T08:31:04.000Z">
+<meta property="article:modified_time" content="2024-02-13T09:34:16.443Z">
+<meta property="article:author" content="88haya">
+<meta property="article:tag" content="量子情報">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="88haya's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">88haya&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSSフィード"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="検索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="検索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://88haya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-量子フィッシャー情報量と量子クラメール・ラオ不等式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2024/02/13/%E9%87%8F%E5%AD%90%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC%E6%83%85%E5%A0%B1%E9%87%8F%E3%81%A8%E9%87%8F%E5%AD%90%E3%82%AF%E3%83%A9%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%A9%E3%82%AA%E4%B8%8D%E7%AD%89%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2024-02-13T08:31:04.000Z" itemprop="datePublished">2024-02-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      量子フィッシャー情報量と量子クラメール・ラオ不等式
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>古典推定理論で用いられるフィッシャー情報量とクラメール・ラオ不等式から始めて、量子フィッシャー情報量と量子クラメール・ラオ不等式について基本事項をまとめます。</p>
+<h1 id="目次">目次</h1>
+<!-- toc -->
+<ul>
+<li><a href="#------">古典推定理論</a></li>
+<li><a href="#-------------------------">量子フィッシャー情報量と量子クラメール・ラオ不等式</a></li>
+<li><a href="#-------------------">純粋状態における量子フィッシャー情報量</a></li>
+<li><a href="#----">参考文献</a></li>
+</ul>
+<!-- tocstop -->
+<h2 id="古典推定理論">古典推定理論</h2>
+<p>まず古典推定理論について説明します。フィッシャー情報量とクラメール・ラオ不等式は古典(量子ではない)推定理論における用語です。</p>
+<p>パラメータ<span class="math inline">\(\theta:=(\theta_1, \theta_2, ..., \theta_d)\)</span>で特徴付けられた未知の確率分布<span class="math inline">\(p(x|\theta)\)</span>が存在するとしたとき、観測結果から<span class="math inline">\(\theta\)</span>を推定することが古典推定理論における推定の目標です。<span class="math inline">\(\theta\)</span>は例えば、ガウス分布における期待値と分散に相当します。</p>
+<p>極端な推定を議論しても仕方ないので、推定には不偏推定を考えます。不偏推定とは推定値のアンサンブル平均が真のパラメータ値に一致する推定のことです。つまり</p>
+<p><span class="math display">\[ \langle\theta^{\text{est}}\rangle_\theta=\theta \]</span></p>
+<p>が成り立ちます。</p>
+<p>共分散行列<span class="math inline">\(C\)</span>の<span class="math inline">\(i, j\)</span>成分を以下のように定義します。</p>
+<p><span class="math display">\[C_{ij}=\sum_xp(x|\theta)(\theta_i^{\text{est}}(x)-\theta_i)(\theta_j^{\text{est}}(x)-\theta_j)\]</span></p>
+<p>共分散行列の<span class="math inline">\((i, i)\)</span>成分は推定値の分散に一致するため、その値が小さいほど推定値の分散が小さい、良い推定であると言えます。</p>
+<p>このとき不偏推定の推定精度を特徴づけるために以下のフィッシャー情報行列<span class="math inline">\(J\)</span>が定義されます。</p>
+<p><span class="math display">\[ J_{ij}:=\sum_x p(x|\theta) \frac{\partial\ln p(x|\theta)}{\partial\theta_i}\frac{\partial\ln p(x|\theta)}{\partial\theta_j} \]</span></p>
+<p><span class="math inline">\(\theta\)</span>の推定値を<span class="math inline">\(\theta^{est}\)</span>とし、<span class="math inline">\(A:=\sum_ia_i\theta_i\)</span>の推定値を<span class="math inline">\(A^{\text{est}}=\sum_ia_i\theta^{\text{est}}_i\)</span>とすると, フィッシャー情報量は以下のクラメール・ラオ不等式で意味付けされる.</p>
+<p><span class="math display">\[(\Delta A^{\text{est}})^2 \geq \frac{1}{N}\sum_{ij}a_i(J^{-1})_{ij}a_j\]</span></p>
+<p>ここで<span class="math inline">\(\Delta\)</span>は分散, Nはサンプル数を表します。また一般に行列の不等式は行列の正定値性を表します。証明については参考文献を参照してください。</p>
+<p>つまりフィッシャー情報行列の逆行列は不偏推定の精度の上限を与えることが分かります。フィッシャー情報量が大きいほど、同じ推定精度を達成するために必要なサンプル数が少なくて済むと解釈することもできます。</p>
+<p>また有名な推定方法である最尤推定はクラメール・ラオ不等式の下限を漸近的に与えることが知られているようです。</p>
+<h2 id="量子フィッシャー情報量と量子クラメールラオ不等式">量子フィッシャー情報量と量子クラメール・ラオ不等式</h2>
+<p>次に量子フィッシャー情報量に基づく量子推定理論について説明します。量子推定理論では確率分布ではなく密度演算子がパラメータ<span class="math inline">\(\theta\)</span>によって与えられている状況を考えます。つまり量子測定により密度演算子を決めるパラメータを決定することが量子推定ということになります。</p>
+<p>量子フィッシャー情報量(Quantum Fisher Information, QFI)には無限個の種類が存在することが知られていますが、ここではRLDフィッシャー情報量と呼ばれるQFIについて説明します。</p>
+<p><span class="math display">\[ \frac{\partial \rho_\theta}{\partial \theta_i}=\rho_\theta L_{\theta i}\]</span> を満たす<span class="math inline">\(L_{\theta i}\)</span>に対してRLDフィッシャー情報量<span class="math inline">\(R_{ij}\)</span>は <span class="math display">\[R_{ij}:=\text{Tr}[\rho_\theta L_{\theta i}L_{\theta j}^{†}]\]</span></p>
+<p>ここから分かるように<span class="math inline">\(R_{ij}\)</span>はエルミート行列です。また</p>
+<p><span class="math display">\[ R_{ij}=\text{Tr}[\rho_\theta^{-1} \frac{\partial\rho_\theta}{\partial\theta_i}\frac{\partial\rho_\theta}{\partial\theta_j}] \]</span></p>
+<p>と書くこともできます。</p>
+<p>量子クラメール・ラオ不等式は次のようになります。</p>
+<p><span class="math display">\[ R \geq J  \]</span></p>
+<p>証明は参考文献を見てください。 よって、測定を記述するPOVMを<span class="math inline">\(\{E_k\}\)</span>、<span class="math inline">\(p(k|\theta)=\text{Tr}[\rho_\theta E_k]\)</span>とすると</p>
+<p><span class="math display">\[(\Delta A^{\text{est}})^2 \geq \frac{1}{N}\sum_{ij}a_i(R^{-1})_{ij}a_j\]</span></p>
+<p>が成立する。</p>
+<h2 id="純粋状態における量子フィッシャー情報量">純粋状態における量子フィッシャー情報量</h2>
+<p>考えている密度演算子が純粋状態<span class="math inline">\(|{\psi(\theta)}\rangle\)</span>のときは以下のように書くことができます。</p>
+<p><span class="math display">\[ R_{ij}=\text{Re}[\langle{\partial_i \psi(\theta)|{\partial_j \psi(\theta)}\rangle}-\langle{\partial_i \psi(\theta)|{\psi(\theta)}}\rangle\langle{\psi(\theta)|\partial_j\psi(\theta)}\rangle] \]</span></p>
+<p>量子状態間の距離などを考えるときにこの考え方が必要になるそうです。詳しくは量子情報幾何などについて調べてみてください。</p>
+<h2 id="参考文献">参考文献</h2>
+<ul>
+<li>沙川貴大, 上田正仁, 量子測定と量子制御[第2版], サイエンス社</li>
+<li>松枝宏明, 量子系のエンタングルメントと幾何学, 森北出版株式会社</li>
+<li>Bharti, Kishor, Fisher Information: A Crucial Tool for NISQ Research, Quantum Views, https://doi.org/10.22331/qv-2021-10-06-61</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://88haya.github.io/2024/02/13/%E9%87%8F%E5%AD%90%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC%E6%83%85%E5%A0%B1%E9%87%8F%E3%81%A8%E9%87%8F%E5%AD%90%E3%82%AF%E3%83%A9%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%A9%E3%82%AA%E4%B8%8D%E7%AD%89%E5%BC%8F/" data-id="clsk5zsh50000ew0995l83z5n" data-title="量子フィッシャー情報量と量子クラメール・ラオ不等式" class="article-share-link">共有</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前の記事</strong>
+      <div class="article-nav-title">【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグ</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VSCode/" rel="tag">VSCode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" rel="tag">ターミナル</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" rel="tag">テンソルネットワーク</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" rel="tag">量子情報</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">タグクラウド</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 15px;">Hexo</a> <a href="/tags/VSCode/" style="font-size: 10px;">VSCode</a> <a href="/tags/git/" style="font-size: 15px;">git</a> <a href="/tags/%E3%82%BF%E3%83%BC%E3%83%9F%E3%83%8A%E3%83%AB/" style="font-size: 10px;">ターミナル</a> <a href="/tags/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF/" style="font-size: 20px;">テンソルネットワーク</a> <a href="/tags/%E9%87%8F%E5%AD%90%E6%83%85%E5%A0%B1/" style="font-size: 20px;">量子情報</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">アーカイブ</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/02/">2月 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">11月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/10/">10月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">9月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">8月 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近の投稿</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/02/13/%E9%87%8F%E5%AD%90%E3%83%95%E3%82%A3%E3%83%83%E3%82%B7%E3%83%A3%E3%83%BC%E6%83%85%E5%A0%B1%E9%87%8F%E3%81%A8%E9%87%8F%E5%AD%90%E3%82%AF%E3%83%A9%E3%83%A1%E3%83%BC%E3%83%AB%E3%83%BB%E3%83%A9%E3%82%AA%E4%B8%8D%E7%AD%89%E5%BC%8F/">量子フィッシャー情報量と量子クラメール・ラオ不等式</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/14/%E3%80%90%E4%B8%80%E8%88%AC%E7%8A%B6%E6%85%8B%E5%A4%89%E5%8C%96%E3%83%BB%E9%87%8F%E5%AD%90%E9%80%9A%E4%BF%A1%E8%B7%AF%E3%80%91CPTP%E5%86%99%E5%83%8F-Kraus%E8%A1%A8%E7%8F%BE-Stinespring%E8%A1%A8%E7%8F%BE-Choi%E8%A1%8C%E5%88%97/">【一般状態変化・量子通信路】CPTP写像/Kraus表現/Stinespring表現/Choi行列</a>
+          </li>
+        
+          <li>
+            <a href="/2023/11/12/%E5%AF%86%E5%BA%A6%E6%BC%94%E7%AE%97%E5%AD%90%E3%81%AE%E6%80%A7%E8%B3%AA%E3%81%A8%E9%87%8F%E5%AD%90%E7%8A%B6%E6%85%8B%E3%83%88%E3%83%A2%E3%82%B0%E3%83%A9%E3%83%95%E3%82%A3%E3%83%BC/">密度演算子の性質と量子状態トモグラフィー</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/28/%E3%80%90%E8%AB%96%E6%96%87%E5%82%99%E5%BF%98%E9%8C%B2%E3%80%91Entropy-Extrapolation%E3%81%A8%E7%AC%A6%E5%8F%B7%E5%8C%96/">【論文備忘録】Entropy Extrapolationと符号化</a>
+          </li>
+        
+          <li>
+            <a href="/2023/10/26/%E3%83%86%E3%83%B3%E3%82%BD%E3%83%AB%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E5%A4%89%E5%88%86%E9%87%8F%E5%AD%90%E5%9B%9E%E8%B7%AF/">テンソルネットワーク変分量子回路</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2024 88haya<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
